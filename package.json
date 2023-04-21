@@ -1,16 +1,17 @@
 {
-  "name": "webframework",
-  "version": "1.0.0",
-  "description": "Fanal project for Web Framwork course",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Eduardo, Nazanin, Sandu",
-  "license": "ISC",
-  "dependencies": {
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "nodemon": "^2.0.22"
-  }
+	"name": "webframework",
+	"version": "1.0.0",
+	"description": "Fanal project for Web Framwork course",
+	"main": "index.js",
+	"scripts": {
+		"start": "nodemon app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Eduardo, Nazanin, Sandu",
+	"license": "ISC",
+	"dependencies": {
+		"ejs": "^3.1.9",
+		"express": "^4.18.2",
+		"nodemon": "^2.0.22"
+	}
 }
