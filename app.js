@@ -24,6 +24,7 @@ mongoose.connect(uri)
 })
 .catch(err => console.error(err));
 
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -32,6 +33,9 @@ app.set('views', 'views')
 
 // app.use(blogRoutes)
 app.get('/', (req, res) => {
-	res.render('index')
+  res.render('index')
 })
+
+const usersRouter = require('./routes/users');
+app.use('/users', usersRouter);
 
