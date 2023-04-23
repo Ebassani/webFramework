@@ -13,3 +13,9 @@ exports.createUser = async (req, res) => {
   
     res.status(201).json(user);
 };
+
+exports.getUsers = async (req, res) => {
+    User.find({}).then(users => {
+        res.json(users)
+    });
+}
