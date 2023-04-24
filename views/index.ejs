@@ -19,14 +19,18 @@
           <img src="<%= card.imageUrl %>" alt="A Book">
         </div>
         <div class="card__content">
-          <h2 class="product__price">$19.99</h2>
-          <p class="product__description">A very interesting book about so many even more
-            interesting
-            things!
-          </p>
+          <h3 class="product__price"><%= card.description %></h3>
         </div>
-        <div class="card__actions">
-          <button class="btn">Add to Cart</button>
+        <div>
+          <p class="product__description"><%= card.date %></p>
+          <div>
+            <button href="/"><img src="icons/like.png" alt="like"></button>
+            <p><%= card.likes %></p>
+            </p>
+          </div>
+        </div>
+        <div class=" card__actions">
+          <button class="btn">Comment</button>
         </div>
       </article>
       <% } %>
