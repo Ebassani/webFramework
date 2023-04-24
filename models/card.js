@@ -1,41 +1,14 @@
-const fs = require('fs')
-const path = require('path')
+const mongoose = require('mongoose')
 
-const p = path.join(
-	path.dirname(process.mainModule.filename),
-	'data',
-	'cards.json'
-)
+const Schema = mongoose.Schema
 
-const getCardsFromFile = callback => {
-	fs.readFile(p, (err, fileContent) => {
-		if (err) {
-			callback([])
-		} else {
-			callback(JSON.parse(fileContent))
-		}
-	})
-}
+const productSchema = new Schema({
+	title: { type: String, required: true },
+	imageUrl: { type: String, required: true },
+	description: { type: String, required: true },
+	date: { type: Date, required: true },
+	likes: { type: Number, required: true },
+})
 
-module.exports = class Card {
-	constructor(title, imageUrl, description, date, likes) {
-		this.title = title
-		this.imageUrl = imageUrl
-		this.description = description
-		this.date = date
-		this.likes = likes
-	}
-
-	save() {
-		getCardsFromFile(cards => {
-			cards.push(this)
-			fs.writeFile(p, JSON.stringify(cards), err => {
-				console.log(err)
-			})
-		})
-	}
-
-	static fetchAll(callback) {
-		getCardsFromFile(callback)
-	}
-}
+//mongoose.model create a collection lowercase + add 's' ex:Card => cards
+module.exports = mongoose.model('Card', productSchema)
