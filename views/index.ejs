@@ -1,15 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index page</title>
+<%- include('includes/head') %>
+<link rel="stylesheet" href="/css/card.css">
 </head>
 
 <body>
-  <h1>Main page</h1>
+  <%- include('includes/header') %>
+  <main>
+    <h1>List of posts on topic: "ALL"</h1>
+    <% if (hasCards){ %>
+    <div class="grid">
+      <% for (let card of cds) { %>
+      <article class="card product-item">
+        <header class="card__header">
+          <h2 class="product__title">
+            <%= card.title %>
+          </h2>
+        </header>
+        <div class="card__image">
+          <img src="<%= card.imageUrl %>" alt="A Book">
+        </div>
+        <div class="card__content">
+          <h2 class="product__price">$19.99</h2>
+          <p class="product__description">A very interesting book about so many even more
+            interesting
+            things!
+          </p>
+        </div>
+        <div class="card__actions">
+          <button class="btn">Add to Cart</button>
+        </div>
+      </article>
+      <% } %>
+    </div>
+    <% } else { %>
+    <h1>No cards</h1>
+    <% } %>
+  </main>
+
 </body>
 
 </html>

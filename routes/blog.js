@@ -1,9 +1,9 @@
 const express = require('express')
 
-const blogController = require('../controllers/blog')
+const blogController = require('../controllers/cards')
 
 const router = express.Router()
 
-router.get('/', blogController.getIndex)
+router.get('/', blogController.getCards)
 
 module.exports = router

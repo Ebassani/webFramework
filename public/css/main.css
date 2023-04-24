@@ -1,0 +1,34 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+		'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	color: white;
+	background-color: #26283a;
+}
+
+.btn {
+	display: inline-block;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	color: #000000;
+	background-color: #fec200;
+	border-radius: 6px;
+	outline: none;
+	transition: 0.3s;
+	border: 2px solid transparent;
+	cursor: pointer;
+}
+.btn:hover,
+.btn:focus {
+	background-color: #ffdd6d;
+	border-color: #fdcd32;
+}
+
+ul {
+	list-style-type: none;
+}
