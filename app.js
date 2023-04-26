@@ -10,6 +10,7 @@ const uri = fs.readFileSync('secrets.txt').toString()
 
 const blogRoutes = require('./routes/blog')
 const usersRouter = require('./routes/users')
+const commentsRouter = require('./routes/comments')
 
 app.set('view engine', 'ejs')
 app.set('views', 'views')
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(blogRoutes)
 
 app.use('/users', usersRouter);
+app.use('comments', commentsRouter);
 
 mongoose.connect(uri)
 .then(() => {
