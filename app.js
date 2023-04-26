@@ -12,6 +12,7 @@ const blogRoutes = require('./routes/blog')
 const usersRouter = require('./routes/users')
 const auth = require('./controllers/auth')
 
+
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
@@ -20,8 +21,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(blogRoutes)
-
 app.use('/users', usersRouter);
+
+app.get('/login', function(req, res){
+  res.render(__dirname +  '/views/login/login.ejs')
+})
+app.get('/register', function (req, res) {
+  res.render(__dirname + '/views/registration/registration.ejs')
+})
 
 mongoose.connect(uri)
 .then(() => {
@@ -32,7 +39,8 @@ mongoose.connect(uri)
 })
 .catch(err => console.error(err));
 
-app.get('/hello', async (req, res) => {
-  const correct = await auth.validateUser('eduardo', 'tantofaz');
+app.post('/login/submit', async (req, res) => {
+  const body = req.body 
+  const correct = await auth.validateUser(body.username, body.password);
   res.json({msg: correct})
 })

@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.login_main{
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #26283A;
+    justify-content: center;
+    align-items: center;
+}
+.login_logo{
+    width: max(15vw, 150px);
+}
+.login_welcome{
+    color: #FFF;
+    font-size: max(2vw, 15px);
+}
+.login_get_started{
+    color: #FFF;
+    font-size: max(1.5vw, 10px);
+}
+.login_upper_text{
+    height: 17vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.login_form{
+    width: 100%;
+    height: 14vw;
+    min-height: 155px;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+input {
+    background-color: #D9D9D9;
+    border: #D9D9D9 solid 0px;
+    border-radius: 10px;
+    width: 20vw;
+    min-width: 250px;
+    height: 3vw;
+    min-height: 40px;
+}
+.login_links {
+    height: 17vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #FFF;
+    font-size: max(.8vw, 10px);
+}
+
+.button {
+    appearance: none;
+    background-color: #FEC200;
+    border: 2px solid #FEC200;
+    border-radius: 15px;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 50px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 20vh;
+    will-change: transform;
+}
+
+.button:disabled {
+    pointer-events: none;
+}
+
+.button:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+a {
+    color: #FFF;
+    text-decoration: underline;
+}
