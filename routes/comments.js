@@ -4,10 +4,16 @@ const controller = require('../controllers/comments');
 
 const router = express.Router();
 
+router.post('/', controller.createComment);
+
 router.get('/' , controller.getComments);
 
-router.get('/:card' , controller.getCardComments);
+router.get('/:id', controller.getComment);
 
-router.post('/', controller.createComment);
+router.put('/:id', controller.updateComment);
+
+router.get('/c/:id' , controller.getCardComments);
+
+router.get('/u/:id' , controller.getUserComments);
 
 module.exports = router;
