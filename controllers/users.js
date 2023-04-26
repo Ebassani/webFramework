@@ -1,4 +1,4 @@
-const User = require('../models/users');
+const User = require('../models/user');
 
 const bcrypt = require('bcrypt');
 
@@ -25,7 +25,7 @@ exports.createUser = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
     User.find({}).then(users => {
-        res.json(users)
+        res.status(201).json(users)
     });
 }
 
@@ -33,7 +33,7 @@ exports.getUser = async (req, res) => {
     const id = req.params.id;
     
     User.findById(id).then(user => {
-        res.json(user)
+        res.status(201).json(user)
     })
     .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
 }
