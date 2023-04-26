@@ -10,6 +10,7 @@ const uri = fs.readFileSync('secrets.txt').toString()
 
 const blogRoutes = require('./routes/blog')
 const usersRouter = require('./routes/users')
+const auth = require('./controllers/auth')
 
 app.set('view engine', 'ejs')
 app.set('views', 'views')
@@ -30,3 +31,8 @@ mongoose.connect(uri)
   });
 })
 .catch(err => console.error(err));
+
+app.get('/hello', async (req, res) => {
+  const correct = await auth.validateUser('eduardo', 'tantofaz');
+  res.json({msg: correct})
+})
