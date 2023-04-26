@@ -14,16 +14,19 @@ const usersRouter = require('./routes/users')
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(blogRoutes)
 
-app.use(usersRouter)
+app.use('/users', usersRouter);
 
-mongoose
-	.connect(uri)
-	.then(app.listen(PORT))
-	.catch(err => {
-		console.log(err)
-	})
+mongoose.connect(uri)
+.then(() => {
+  console.log('Connected to MongoDB');
+  app.listen(PORT, () => {
+    console.log(`Server started on http://localhost:${PORT}`);
+  });
+})
+.catch(err => console.error(err));
