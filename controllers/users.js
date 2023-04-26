@@ -1,5 +1,4 @@
 const User = require('../models/users');
-const mongoose = require('mongoose');
 
 const bcrypt = require('bcrypt');
 
@@ -35,7 +34,8 @@ exports.getUser = async (req, res) => {
     
     User.findById(id).then(user => {
         res.json(user)
-    });
+    })
+    .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
 }
 
 exports.updateUser = async (req, res) => {
@@ -45,6 +45,7 @@ exports.updateUser = async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     const pass = await bcrypt.hash(password, salt);
+
     
     User.findByIdAndUpdate(id, { username, password: pass }, {new: true}).then( updatedUser => {
         if (!updatedUser){
@@ -53,5 +54,38 @@ exports.updateUser = async (req, res) => {
         else{
             res.status(201).json(updatedUser)
         }
-    });
+    })
+    .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
+}
+
+exports.patchUser = async (req, res) => {
+    const { username, password, email } = req.body;
+
+    const id = req.params.id;
+
+    const salt = await bcrypt.genSalt(10);
+    const pass = await bcrypt.hash(password, salt);
+
+    
+    User.findByIdAndUpdate(id, { username, password: pass, email }, {new: true}).then( updatedUser => {
+        if (!updatedUser){
+            res.status(404).json({message: 'No user with id: ' + id})
+        }
+        else{
+            res.status(201).json(updatedUser)
+        }
+    })
+    .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
+}
+
+
+exports.deleteUser = async (req, res) => {
+    const id = req.params.id;
+
+    await User.deleteOne({_id : id});
+
+    User.find({}).then(users => {
+        res.json(users)
+    })
+    .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
 }
