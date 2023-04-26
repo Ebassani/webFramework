@@ -6,7 +6,10 @@ const router = express.Router()
 
 router.get('/', blogController.getIndex)
 
-router.post('/add-card', blogController.getAddCard)
-// router.post('/add-card', adminController.postAddCard)
+router.get('/add-card', blogController.getAddCard)
+router.post('/add-card', blogController.postAddCard)
+router.get('/edit-card/:cardId', blogController.getEditCard)
+router.post('/edit-card', blogController.postEditCard)
+router.post('/delete-card', blogController.postDeleteCard)
 
 module.exports = router
