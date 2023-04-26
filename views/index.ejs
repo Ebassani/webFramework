@@ -6,7 +6,7 @@
   <%- include('includes/header') %>
   <main>
     <h1>List of posts on topic: "ALL"</h1>
-    <% if (hasCards){ %>
+    <% if (cds.length > 0){ %>
     <div class="grid">
       <% for (let card of cds) { %>
       <article class="card product-item">
@@ -31,6 +31,14 @@
         </div>
         <div class=" card__actions">
           <button class="btn">Comment</button>
+        </div>
+        <div class="card__actions">
+          <a href="/edit-card/<%= card._id %>?edit=true" class="btn">Edit</a>
+          <form action="/delete-card" method="POST">
+            <input type="hidden" value="<%= card._id %>" name="cardId">
+            <button class="btn" type="submit">Delete</button>
+          </form>
+
         </div>
       </article>
       <% } %>
