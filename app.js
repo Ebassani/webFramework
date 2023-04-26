@@ -26,6 +26,11 @@ app.use('/users', usersRouter);
 app.get('/login', function(req, res){
   res.render(__dirname +  '/views/login/login.ejs')
 })
+app.post('/login', async (req, res) => {
+  const body = req.body 
+  const correct = await auth.validateUser(body.username, body.password);
+  res.json({msg: correct})
+})
 app.get('/register', function (req, res) {
   res.render(__dirname + '/views/registration/registration.ejs')
 })
@@ -38,9 +43,3 @@ mongoose.connect(uri)
   });
 })
 .catch(err => console.error(err));
-
-app.post('/login/submit', async (req, res) => {
-  const body = req.body 
-  const correct = await auth.validateUser(body.username, body.password);
-  res.json({msg: correct})
-})
