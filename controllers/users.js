@@ -25,7 +25,7 @@ exports.createUser = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
     User.find({}).then(users => {
-        res.status(201).json(users)
+        res.status(200).json(users)
     });
 }
 
@@ -33,7 +33,7 @@ exports.getUser = async (req, res) => {
     const id = req.params.id;
     
     User.findById(id).then(user => {
-        res.status(201).json(user)
+        res.status(200).json(user)
     })
     .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
 }
@@ -52,7 +52,7 @@ exports.updateUser = async (req, res) => {
             res.status(404).json({message: 'No user with id: ' + id})
         }
         else{
-            res.status(201).json(updatedUser)
+            res.status(200).json(updatedUser)
         }
     })
     .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
@@ -72,7 +72,7 @@ exports.patchUser = async (req, res) => {
             res.status(404).json({message: 'No user with id: ' + id})
         }
         else{
-            res.status(201).json(updatedUser)
+            res.status(200).json(updatedUser)
         }
     })
     .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
@@ -86,6 +86,6 @@ exports.deleteUser = async (req, res) => {
     .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
 
     User.find({}).then(users => {
-        res.json(users)
+        res.status(200).json(users)
     });
 }

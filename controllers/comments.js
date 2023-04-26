@@ -16,7 +16,7 @@ exports.createComment = async (req, res) => {
 
 exports.getComments = async (req, res) => {
     Comment.find({}).then(comments => {
-        res.status(201).json(comments)
+        res.status(200).json(comments)
     });
 }
 
@@ -24,25 +24,25 @@ exports.getComment = async (req, res) => {
     const id = req.params.id;
     
     Comment.findById(id).then(comment => {
-        res.status(201).json(comment)
+        res.status(200).json(comment)
     })
     .catch(err => res.status(404).json({message: 'No comment with id: ' + id}));
 }
 
 exports.getCardComments = async (req, res) => {
-    const card = req.params.card;
-    
+    const card = req.params.id;
+
     Comment.find({card}).then(comments => {
-        res.status(201).json(comments)
+        res.status(200).json(comments)
     })
     .catch(err => res.status(404).json({message: 'Card does\'t exist or does not have comments'}));
 }
 
 exports.getUserComments = async (req, res) => {
-    const user = req.params.user;
+    const user = req.params.id;
     
     Comment.find({user}).then(comments => {
-        res.status(201).json(comments)
+        res.status(200).json(comments)
     })
     .catch(err => res.status(404).json({message: 'User does\'t exist or does not have comments'}));
 }
@@ -58,7 +58,7 @@ exports.updateComment = async (req, res) => {
             res.status(404).json({message: 'No comment with id: ' + id})
         }
         else{
-            res.status(201).json(updatedComment)
+            res.status(200).json(updatedComment)
         }
     })
     .catch(err => res.status(404).json({message: 'No comment with id: ' + id}));
@@ -74,7 +74,7 @@ exports.patchComment = async (req, res) => {
             res.status(404).json({message: 'No comment with id: ' + id})
         }
         else{
-            res.status(201).json(updatedComment)
+            res.status(200).json(updatedComment)
         }
     })
     .catch(err => res.status(404).json({message: 'No comment with id: ' + id}));
@@ -87,6 +87,6 @@ exports.deleteComment = async (req, res) => {
     .catch(err => res.status(404).json({message: 'No comment with id: ' + id}));
 
     Comment.find({}).then(comment => {
-        res.json(comment)
+        res.status(200).json(comment)
     });
 }
