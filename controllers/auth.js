@@ -11,4 +11,4 @@ async function validateUser(username, password) {
   return passwordMatch;
 }
 
-module.exports = { validateUserCredentials };
+module.exports = { validateUser };
