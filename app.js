@@ -10,6 +10,7 @@ const uri = fs.readFileSync('secrets.txt').toString()
 
 const blogRoutes = require('./routes/blog')
 const usersRouter = require('./routes/users')
+const commentsRouter = require('./routes/comments')
 const auth = require('./controllers/auth')
 
 
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(blogRoutes)
 app.use('/users', usersRouter);
+app.use('/comments', commentsRouter);
 
 app.get('/login', function(req, res){
   res.render(__dirname +  '/views/login/login.ejs')
