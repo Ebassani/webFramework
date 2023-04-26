@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(blogRoutes)
 
 app.use('/users', usersRouter);
-app.use('comments', commentsRouter);
+app.use('/comments', commentsRouter);
 
 mongoose.connect(uri)
 .then(() => {
