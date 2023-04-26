@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+</head>
+<body>
+    <div class="login_main">
+        <img class="login_logo" src="images/login_reg_logo.svg"/>
+        <div class="login_upper_text">
+            <p class="login_welcome">Welcome to Rabbit!</p>
+            <p class="login_get_started">Get started now</p>
+        </div>
+        <div class="login_container_form">
+            <form class="login_form" id="loginForm" method="POST" action="/login/submit">
+                <input type="text" id="username" name="username" placeholder="USERNAME">
+                 <br>
+                <input type="password" id="password" name="password" placeholder="PASSWORD">
+                <br>
+                <button type="submit" class="button">Login</button>
+            </form>
+        </div>
+        <div class="login_links">
+            <p class="login_singUp">YOU DON’T HAVE A ACCOUNT? <a href="/register">SIGN UP HERE</a></p>
+            <p class="login_forgot">FORGOT YOUR PASSWORD? <u>CLICK HERE</u></p>
+        </div>
+    </div>
+
+</body>
+</html>
