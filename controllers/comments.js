@@ -53,7 +53,7 @@ exports.updateComment = async (req, res) => {
     const id = req.params.id;
 
     
-    User.findByIdAndUpdate(id, { username, date: Date.now }, {new: true}).then( updatedComment => {
+    User.findByIdAndUpdate(id, { text, date: Date.now }, {new: true}).then( updatedComment => {
         if (!updatedComment){
             res.status(404).json({message: 'No comment with id: ' + id})
         }
@@ -62,4 +62,31 @@ exports.updateComment = async (req, res) => {
         }
     })
     .catch(err => res.status(404).json({message: 'No comment with id: ' + id}));
+}
+
+exports.patchComment = async (req, res) => {
+    const {text, user, card, date, likes} = req.body;
+
+    const id = req.params.id;
+    
+    User.findByIdAndUpdate(id, {text, user, card, date, likes}, {new: true}).then( updatedComment => {
+        if (!updatedComment){
+            res.status(404).json({message: 'No comment with id: ' + id})
+        }
+        else{
+            res.status(201).json(updatedComment)
+        }
+    })
+    .catch(err => res.status(404).json({message: 'No comment with id: ' + id}));
+}
+
+exports.deleteComment = async (req, res) => {
+    const id = req.params.id;
+
+    await Comment.deleteOne({_id : id})
+    .catch(err => res.status(404).json({message: 'No comment with id: ' + id}));
+
+    Comment.find({}).then(comment => {
+        res.json(comment)
+    });
 }

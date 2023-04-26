@@ -12,6 +12,10 @@ router.get('/:id', controller.getComment);
 
 router.put('/:id', controller.updateComment);
 
+router.patch('/:id', controller.patchComment);
+
+router.delete('/:id', controller.deleteComment);
+
 router.get('/c/:id' , controller.getCardComments);
 
 router.get('/u/:id' , controller.getUserComments);

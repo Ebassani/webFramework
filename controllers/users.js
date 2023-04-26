@@ -82,10 +82,10 @@ exports.patchUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     const id = req.params.id;
 
-    await User.deleteOne({_id : id});
+    await User.deleteOne({_id : id})
+    .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
 
     User.find({}).then(users => {
         res.json(users)
-    })
-    .catch(err => res.status(404).json({message: 'No user with id: ' + id}));
+    });
 }
