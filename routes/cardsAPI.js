@@ -1,10 +1,11 @@
 const express = require('express');
 
 const controller = require('../controllers/cardsAPI');
+const auth = require('../controllers/auth')
 
 const router = express.Router();
 
-router.post('/', controller.createCard);
+router.post('/', auth.requireAuthentication, controller.createCard );
 
 router.get('/' , controller.getCards);
 

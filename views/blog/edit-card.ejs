@@ -6,7 +6,7 @@
   <%- include('../includes/header') %>
 
   <main>
-    <form class="product-form" action="/<% if (editing) { %>edit-card<% } else { %>add-card<% } %>" method="POST">
+    <form class="product-form" action="/<% if (editing) { %>edit-card<% } else { %>api/cards<% } %>" method="POST">
       <div class="form-control">
         <label for="title">Title</label>
         <input type="text" name="title" id="title" value="<% if (editing) { %><%= card.title %><% } %>">

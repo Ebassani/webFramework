@@ -1,13 +1,23 @@
 const Card = require('../models/card');
-
+const User = require('../models/user')
+const Topic = require('../models/topic')
 exports.createCard = async (req, res) => {
-    const { title, description, user_id, topic_id } = req.body;
-
-    const card = new Card ({ title, description, user_id, topic_id });
-
-    await card.save();
-
-    res.status(201).json(card)
+    const { title, description } = req.body;
+    try
+    {
+        const user = await User.findOne({username: req.session.username})
+        const topic = await Topic.findOne({topic: req.body.topic})
+        user_id = await user._id
+        topic_id = await topic._id
+        const card = new Card ({ title, description, user_id, topic_id });
+        await card.save();
+        res.status(201).json(card)
+    }
+    catch(e)
+    {
+        console.log(e)
+        res.status(500)
+    }
 }
 
 exports.getCards = async (req, res) => {
