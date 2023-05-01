@@ -7,8 +7,18 @@ async function validateUser(username, password) {
     return false;
   }
   const passwordMatch = await bcrypt.compare(password, user.password);
-  
+  if(passwordMatch){
+    
+  }
   return passwordMatch;
 }
 
-module.exports = { validateUser };
+function requireAuthentication(req, res, next) {
+  if (req.session.loggedIn) {
+    return next();
+  } else {
+    res.redirect('/');
+  }
+}
+
+module.exports = { validateUser, requireAuthentication };
