@@ -26,12 +26,10 @@ exports.getAddCard = (req, res, next) => {
 exports.postAddCard = (req, res, next) => {
 	const title = req.body.title
 	const description = req.body.description
-	const date = req.body.date
 	const likes = req.body.likes
 	const card = new Card({
 		title: title,
 		description: description,
-		date: date,
 		likes: likes,
 	})
 	card.save()
