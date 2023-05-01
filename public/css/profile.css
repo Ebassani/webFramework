@@ -40,6 +40,77 @@
     height: 80px;
     bottom: 0;
 }
+
+.button {
+    position: absolute;
+    right: 50px;
+    top: 25%;
+    appearance: none;
+    background-color: #FEC200;
+    border: 2px solid #FEC200;
+    border-radius: 15px;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+    min-height: 50px;
+    min-width: 0;
+    outline: none;
+    padding: 16px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 20vh;
+    will-change: transform;
+}
+
+.button:disabled {
+    pointer-events: none;
+}
+
+.button:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
+
+.button:active {
+    box-shadow: none;
+    transform: translateY(0);
+}
+
+#log_out {
+    position: absolute;
+    right: 50px;
+    bottom: -35px;
+}
+
+#log_out > a {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #FEC200;
+    border: 2px solid #FEC200;
+    border-radius: 15px;
+    color: black;
+    margin: 0;
+    min-width: 0;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    padding: 10px;
+    touch-action: manipulation;
+    text-align: center;
+    will-change: transform;
+    width: 17vh;
+ }
+ #log_out > a:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+    transform: translateY(-2px);
+}
 .content {
     grid-column-start: 2;
     grid-column-end: 9;
@@ -49,3 +120,31 @@
     grid-template-columns: repeat(2, 1fr);
     grid-auto-flow: dense;
 }
+.slide-in {
+    animation: slide-in 0.3s forwards;
+  }
+  
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+.slide-out{
+    animation: slide-out 0.3s forwards;
+  }
+
+  @keyframes slide-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
