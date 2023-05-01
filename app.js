@@ -10,10 +10,10 @@ const uri = fs.readFileSync('secrets.txt').toString()
 const session = require('express-session');
 
 const blogRoutes = require('./routes/blog')
-const usersApiRouter = require('./routes/users')
-const commentsApiRouter = require('./routes/comments')
-const topicsApiRouter = require('./routes/topics')
-const cardsApiRouter = require('./routes/topics')
+const usersApiRouter = require('./routes/usersAPI')
+const commentsApiRouter = require('./routes/commentsAPI')
+const topicsApiRouter = require('./routes/topicsAPI')
+const cardsApiRouter = require('./routes/topicsAPI')
 
 const auth = require('./controllers/auth')
 
