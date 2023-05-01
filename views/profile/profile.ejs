@@ -2,7 +2,28 @@
 <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
-    <div>
-        <%= user.username %>
+    <div class="profile_main">
+        <div class="top-menu">
+            <img src="images/logo_grey.svg" alt="logo">
+        </div>
+        <div class="sidebar">
+            <a href="/"><img src="images/home.svg" alt="home_icon"></a>
+            <a href="/profile"><img src="images/profile.svg" src="profile_icon"></a>
+            <a href="/"><img src="images/Community.svg" src="community_icon"></a>
+        </div>
+        <div class="content">
+            <div>
+                <%= user.username %>
+            </div>
+            <div class="card">
+                <% card.forEach((card) => { %>
+                    <div>
+                    <h2><%= card.title %></h2>
+                    <p><%= card.description %></p>
+                    <p>Likes: <%= card.likes %></p>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
     </div>
 </body>

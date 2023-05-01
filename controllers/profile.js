@@ -5,9 +5,9 @@ exports.getIndex = async(req, res) => {
     {
         const user = await User.findOne({username: req.session.username})
         const id = await user._id
-        const card = await Card.find({id})
-        console.log(card)
-        console.log(id)
+        const card = await Card.find({user_id: id})
+        //console.log(card)
+        //console.log(id)
         res.render('profile/profile', {pageTitle: 'Profile Page', user: user,card: card, path:"/"})
     }
     catch(error){
