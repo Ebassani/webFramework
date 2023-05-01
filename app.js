@@ -10,11 +10,12 @@ const uri = fs.readFileSync('secrets.txt').toString()
 const session = require('express-session');
 
 const blogRoutes = require('./routes/blog')
-const usersRouter = require('./routes/users')
-const commentsRouter = require('./routes/comments')
-const topicsRouter = require('./routes/topics')
+const usersApiRouter = require('./routes/users')
+const commentsApiRouter = require('./routes/comments')
+const topicsApiRouter = require('./routes/topics')
+const cardsApiRouter = require('./routes/topics')
+
 const auth = require('./controllers/auth')
-const profileRoutes = require('./routes/profile')
 
 app.set('view engine', 'ejs')
 app.set('views', 'views')
@@ -30,10 +31,10 @@ app.use(session({
 }));
 
 app.use(blogRoutes)
-app.use('/users', usersRouter);
-app.use('/comments', commentsRouter);
-app.use('/topics', topicsRouter);
-app.use('/profile', profileRoutes)
+app.use('/api/users', usersApiRouter);
+app.use('/api/comments', commentsApiRouter);
+app.use('/api/topics', topicsApiRouter);
+app.use('/api/cards', cardsApiRouter);
 
 app.get('/login', function(req, res){
   res.render(__dirname +  '/views/login/login.ejs')
