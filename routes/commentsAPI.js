@@ -1,6 +1,6 @@
 const express = require('express');
 
-const controller = require('../controllers/comments');
+const controller = require('../controllers/commentsAPI');
 
 const router = express.Router();
 

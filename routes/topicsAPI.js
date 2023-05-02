@@ -1,6 +1,6 @@
 const express = require('express')
 
-const controller = require('../controllers/topics')
+const controller = require('../controllers/topicsAPI')
 
 const router = express.Router()
 
