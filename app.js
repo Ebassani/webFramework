@@ -13,7 +13,9 @@ const blogRoutes = require('./routes/blog')
 const usersApiRouter = require('./routes/usersAPI')
 const commentsApiRouter = require('./routes/commentsAPI')
 const topicsApiRouter = require('./routes/topicsAPI')
-const cardsApiRouter = require('./routes/topicsAPI')
+const cardsApiRouter = require('./routes/cardsAPI')
+
+const cardsRouter = require('./routes/cards')
 
 const auth = require('./controllers/auth')
 
@@ -35,6 +37,8 @@ app.use('/api/users', usersApiRouter);
 app.use('/api/comments', commentsApiRouter);
 app.use('/api/topics', topicsApiRouter);
 app.use('/api/cards', cardsApiRouter);
+
+app.use('/c', cardsRouter);
 
 app.get('/login', function(req, res){
   res.render(__dirname +  '/views/login/login.ejs')
