@@ -1,19 +1,19 @@
-const express = require('express');
+const express = require('express')
 
-const controller = require('../controllers/topicsAPI');
+const controller = require('../controllers/topicsAPI')
 
-const router = express.Router();
+const router = express.Router()
 
-router.post('/', controller.createTopic);
+router.post('/', controller.createTopic)
 
-router.get('/' , controller.getTopics);
+router.get('/', controller.getTopics)
 
-router.get('/:id', controller.getTopic);
+router.get('/:id', controller.getTopic)
 
-router.put('/:id', controller.updateTopic);
+router.put('/:id', controller.updateTopic)
 
-router.patch('/:id', controller.patchTopic);
+router.patch('/:id', controller.patchTopic)
 
 router.delete('/:id', controller.deleteTopic)
 
-module.exports = router;
+module.exports = router

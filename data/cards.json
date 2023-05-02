@@ -8,9 +8,10 @@
 	},
 	{
 		"title": "Discord error",
-		"imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fexternal-preview.redd.it%2FKxXv75YiPcTBDlNi5N8TuhCQcp4fwM79FGyNHaHjZf0.png%3Fauto%3Dwebp%26s%3D14a2e35ae7d09c24bb3c4c6a337e90a5ee34f3be&f=1&nofb=1&ipt=d670e797b71a89961bd63e2504f86aa31d7535034f8aad126c5cfeef6154b079&ipo=images",
 		"description": "Discord receives a steady stream of updates with bug fixes and new features, so it tries to update every time you open it. When a Discord update fails, it's usually because of an internet issue, but it can also be due to corrupted files. Since Discord won't open when it fails to update, we've pulled together a troubleshooting procedure that will get you back online and chatting as soon as possible.",
 		"date": "2012-11-01",
-		"likes": 234
+		"likes": 234,
+		"user_id": "64498ca7f5d074a3ba3648d2",
+		"topic_id": "1"
 	}
 ]

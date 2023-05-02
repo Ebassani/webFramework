@@ -17,6 +17,7 @@ const cardsApiRouter = require('./routes/cardsAPI')
 
 const cardsRouter = require('./routes/cards')
 
+const profileRouter = require('./routes/profile')
 const auth = require('./controllers/auth')
 
 app.set('view engine', 'ejs')
@@ -37,6 +38,8 @@ app.use('/api/users', usersApiRouter);
 app.use('/api/comments', commentsApiRouter);
 app.use('/api/topics', topicsApiRouter);
 app.use('/api/cards', cardsApiRouter);
+app.use('/profile', profileRouter)
+
 
 app.use('/c', cardsRouter);
 
