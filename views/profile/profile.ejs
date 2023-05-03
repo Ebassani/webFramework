@@ -35,8 +35,8 @@
                             <p><%= card.description %></p>
                             <p style="font-weight: 600;"><%= card.likes %> Likes <img src="images/like.svg"></p>
                             <div>
-                                <button class="edit_delete">Edit Post</button>
-                                <button class="edit_delete">Delete Post</button>
+                                <button class="edit_delete" id="edit_btnn">Edit Post</button>
+                                <button class="edit_delete" data-postid="<%= card._id %>" onclick="delete_post(this)" id="delete_bttn">Delete Post</button>
                             </div>
                         </div>
                     <% }) %>
@@ -109,7 +109,18 @@
             background.style.opacity = "1"
             }, { once: true });
       }
-
    }
+   async function delete_post(card_id) {
+        const button = document.getElementById('delete_bttn')
+        const postId = button.dataset.postid;
+        try{
+            data = await fetch("/api/cards/"+postId, {method: 'delete'})
+        }
+        catch(error){
+            console.log(error)
+        }
+
+        location.reload();
+      }
 
 </script>
