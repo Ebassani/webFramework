@@ -12,15 +12,18 @@ exports.cardPage = (req, res, next) => {
             
             let usernames = [];
             let promises = [];
+            let topics = [];
 
             let topic= {title: '[[DELETED]]', icon: '/icons/none.png'}
-            
 
             let promise = Topic.findById(card.topic_id).then(topic_found => {
                 topic = topic_found;
-                
-            }).catch(err => {});
+            }).catch();
 
+            promises.push(promise);
+            
+            promise = Topic.find().then(topics_found => topics = topics_found).catch()
+            
             promises.push(promise);
 
             comments.forEach(comment => {
@@ -40,7 +43,8 @@ exports.cardPage = (req, res, next) => {
                     path: '/' + card.id,
                     comments,
                     usernames,
-                    topic
+                    topic,
+                    topics
                 })
             }).catch(err => res.status(400).json({message: 'Unexpected error'}))
             

@@ -6,7 +6,22 @@
 
     <main>
         <div class="">
-            <article class="card product-item">
+            <div class="topics">
+                <p class="topics-title">Trending community</p>
+                <div class="separator"></div>
+        
+                <% for (let topic of topics) { %>
+                <div class="topic">
+                  <div class="topic-icon"><img src="/icons/Frame.png" alt="robot icon"></div>
+                  <div class="topic-desc">
+                    <div class="topic-desc__name"><%= topic.title %></div>
+                    <div class="topic-desc__counter">34k members</div>
+                  </div>
+                </div>
+                <% } %>
+              </div>
+            
+              <article class="card product-item">
                 <header class="card__header">
                   <img src="../images/avatar1.png" alt="">
                   <h2 class="product__title">
