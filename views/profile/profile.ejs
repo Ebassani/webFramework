@@ -3,29 +3,56 @@
 </head>
 <body>
 
-        <div class="profile_main" id="background">
+        <div class="profile_main">
             <div class="top-menu">
                 <img src="images/logo_grey.svg" alt="logo">
-                <button onclick="show_hide()" class="button"><%= user.username %>&nbsp;&nbsp;˅</button>
+                <button onclick="show_hide()" class="button"><img src="images/profile_av.svg" alt="avatar_icon">&nbsp;<p><%= user.username %></p>&nbsp;<img src="images/arrow.svg" alt="dropdown_arrow"></button>
                 <div id="log_out" style="display: none"><a href="#">Log Out</a></div>
             </div>
-            <div class="sidebar">
-                <a href="/"><img src="images/home.svg" alt="home_icon"></a>
-                <a href="/profile"><img src="images/profile.svg" src="profile_icon"></a>
-                <a href="/"><img src="images/Community.svg" src="community_icon"></a>
+            <div class="left_bar">
+                <div class="icons">
+                    <a href="/"><img src="images/home.svg" alt="home_icon"></a>
+                    <a href="/profile"><img src="images/profile.svg" alt="profile_icon"></a>
+                    <a href="/"><img src="images/Community.svg" alt="Community_icon"></a>
+                </div>
+                <div class="words">
+                    <a href="/">HOME</a>
+                    <a href="/profile">PROFILE</a>
+                    <a href="/">COMMUNITY</a>
+                </div>
             </div>
             <div class="content">
-                <div>
-                    <%= user.username %>
-                </div>
-                <div class="card">
+                <div class="middle_bar">
+                    <div class="profile_info">
+                            <img src="images/profile_av.svg" alt="profile_picture">
+                            <p style="font-weight: 600;" class="username"><%= user.username %></p>
+                            <button class="edit">Edit Profile</button>
+                    </div>
+                    <div class="card">
                     <% card.forEach((card) => { %>
-                        <div>
-                        <h2><%= card.title %></h2>
-                        <p><%= card.description %></p>
-                        <p>Likes: <%= card.likes %></p>
+                        <div class="each_card">
+                            <h2><%= user.username %></h2>
+                            <p><%= card.description %></p>
+                            <p style="font-weight: 600;"><%= card.likes %> Likes <img src="images/like.svg"></p>
+                            <div>
+                                <button class="edit_delete">Edit Post</button>
+                                <button class="edit_delete">Delete Post</button>
+                            </div>
                         </div>
                     <% }) %>
+                    </div>
+                </div>
+                <div class="right_bar">
+                    <div class="void"></div>
+                    <p>Trending Community</p>
+                    <div class="trending_community">
+                        <% trending.slice(0, 5).forEach(function(topic) { %>
+                            <div class="each_topic">
+                                <img src="<%= topic.icon %>" alt="Icon Image">
+                                <p><%= topic.title %></p>
+                            </div>
+                          <% }); %>
+                    </div>
                 </div>
             </div>
         </div>
