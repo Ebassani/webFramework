@@ -1,11 +1,11 @@
 <%- include('../includes/head') %>
-<link rel="stylesheet" href="/css/card.css">
+<link rel="stylesheet" href="/css/card_page.css">
 
 <body>
     <%- include('../includes/header') %>
 
     <main>
-        <div class="">
+        <div class="wrapper">
             <div class="topics">
                 <p class="topics-title">Trending community</p>
                 <div class="separator"></div>
@@ -20,39 +20,37 @@
                 </div>
                 <% } %>
               </div>
-            
-              <article class="card product-item">
-                <header class="card__header">
-                  <img src="../images/avatar1.png" alt="">
-                  <h2 class="product__title">
-                    <%= card.title %>
-                    <%= topic.title %>
-                  </h2>
-                </header>
-                <div class="card__posted">Posted <%= card.date %></div>
-                <p class="card__descr">
-                    <%= card.description %>
-                </p>
-                <div class="separator"></div>
-            
-                <div class="card-actions">
-                    <a href=""><img src="../icons/like.png" alt=""></a>
-                    <p class="card-actions__counter"><%= card.likes %> Likes</p>
-                    <a href=""><img src="../icons/Vector.png" alt=""></a>
-                    <p class="card-actions__counter">423 Comments</p>
-                </div>
-            </article>
 
-            <div class="comments">
-                <% if(comments.length > 0){ %>
-                    <% for(var i = comments.length -1; i >= 0; i--) { %>
-                        <p><%= usernames[i] %></p>
-                        <p><%= comments[i].text %></p>
+              <div class="card">
+                <div class="card-intro">
+                    <div class="topic-icon"><img src="/icons/Frame.png" alt="robot icon"></div>
+                    <div class="card-intro-description">
+                        <a href="" class="card-topic">c/<%= topic.title %></a>
+                        <span class="card-user">by <%= user.username %> * <%= card.date %></span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title"><%= card.title %></h1>
+                    <div class="card-text">
+                        <%= card.description %>
+                    </div>
+                    <div class="card-likes">
+                        <p class="card-likes__counter"><%= card.likes %></p>
+                        <a href=""><img src="../icons/like.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="card-comments">
+                    <% if(comments.length > 0){ %>
+                        <% for(var i = comments.length -1; i >= 0; i--) { %>
+                            <p><%= usernames[i].username %></p>
+                            <p><%= comments[i].text %></p>
+                        <% } %>
+                    <% } else { %>
+                        <h1>bar</h1>
                     <% } %>
-                <% } else { %>
-                    <h1>bar</h1>
-                <% } %>
-            </div>
+                </div>
+              </div>
+
         </div>
         
     </main>

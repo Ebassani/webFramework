@@ -1,0 +1,45 @@
+.wrapper {
+    display: flex;
+    margin: 1.5rem;
+}
+
+.card-intro{
+    display: flex;
+    border-bottom: 1px solid grey;
+}
+
+.card-topic {
+    color: white;
+    text-decoration: none;
+    font-size:x-large;
+    font-weight: bold;
+    width: fit-content;
+}
+
+.card-intro-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body {
+    padding: 0.5rem;
+    border-bottom: 1px solid grey;
+}
+
+.card-text {
+    padding: 1rem 0;
+}
+
+.card-likes {
+    display: flex;
+    background-color: #d9d9d9;
+    color: black;
+    padding: 0.5rem;
+    width: fit-content;
+    border: none;
+    border-radius: 10px;
+}
+
+.card-likes__counter {
+    padding-right: 0.5rem;
+}
