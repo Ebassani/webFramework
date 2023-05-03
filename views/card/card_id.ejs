@@ -1,13 +1,44 @@
+<%- include('../includes/head') %>
+<link rel="stylesheet" href="/css/card.css">
+
 <body>
+    <%- include('../includes/header') %>
+
     <main>
-        <h3 class="product__price"><%= card.description %></h3>
-        <% if(comments.length > 0){ %>
-            <% for(var i = comments.length -1; i >= 0; i--) { %>
-                <p><%= usernames[i] %></p>
-                <p><%= comments[i].text %></p>
-            <% } %>
-        <% } else { %>
-            <h1>bar</h1>
-        <% } %>
+        <div class="">
+            <article class="card product-item">
+                <header class="card__header">
+                  <img src="../images/avatar1.png" alt="">
+                  <h2 class="product__title">
+                    <%= card.title %>
+                    <%= topic.title %>
+                  </h2>
+                </header>
+                <div class="card__posted">Posted <%= card.date %></div>
+                <p class="card__descr">
+                    <%= card.description %>
+                </p>
+                <div class="separator"></div>
+            
+                <div class="card-actions">
+                    <a href=""><img src="../icons/like.png" alt=""></a>
+                    <p class="card-actions__counter"><%= card.likes %> Likes</p>
+                    <a href=""><img src="../icons/Vector.png" alt=""></a>
+                    <p class="card-actions__counter">423 Comments</p>
+                </div>
+            </article>
+
+            <div class="comments">
+                <% if(comments.length > 0){ %>
+                    <% for(var i = comments.length -1; i >= 0; i--) { %>
+                        <p><%= usernames[i] %></p>
+                        <p><%= comments[i].text %></p>
+                    <% } %>
+                <% } else { %>
+                    <h1>bar</h1>
+                <% } %>
+            </div>
+        </div>
+        
     </main>
 </body>

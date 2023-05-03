@@ -1,6 +1,7 @@
 const Card = require('../models/card');
 const Comment = require('../models/comment')
 const User = require('../models/user')
+const Topic = require('../models/topic')
 
 exports.cardPage = (req, res, next) => {
     const id = req.params.id;
@@ -12,9 +13,19 @@ exports.cardPage = (req, res, next) => {
             let usernames = [];
             let promises = [];
 
+            let topic= {title: '[[DELETED]]', icon: '/icons/none.png'}
+            
+
+            let promise = Topic.findById(card.topic_id).then(topic_found => {
+                topic = topic_found;
+                
+            }).catch(err => {});
+
+            promises.push(promise);
+
             comments.forEach(comment => {
                 
-                let promise = User.findById(comment.user).then(user => {
+                promise = User.findById(comment.user).then(user => {
                     usernames.push(user.username);
                 })
                 .catch(err => usernames.push('[[DELTED]]'));
@@ -28,7 +39,8 @@ exports.cardPage = (req, res, next) => {
                     card,
                     path: '/' + card.id,
                     comments,
-                    usernames
+                    usernames,
+                    topic
                 })
             }).catch(err => res.status(400).json({message: 'Unexpected error'}))
             
