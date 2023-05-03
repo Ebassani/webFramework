@@ -39,8 +39,9 @@ exports.getUser = async (req, res) => {
 }
 
 exports.updateUser = async (req, res) => {
-    const { username, password } = req.body;
-
+    
+    const { password } = req.body;
+    const username = req.session.username
     const id = req.params.id;
 
     const salt = await bcrypt.genSalt(10);
