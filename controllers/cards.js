@@ -35,9 +35,9 @@ exports.cardPage = (req, res, next) => {
             comments.forEach(comment => {
                 
                 promise = User.findById(comment.user).then(user => {
-                    usernames.push(user);
+                    usernames.push([user, comment]);
                 })
-                .catch(err => usernames.push({username: '[[DELTED]]'}));
+                .catch(err => usernames.push([{username: '[[DELTED]]'}, comment]));
                 
                 promises.push(promise);
             }); 

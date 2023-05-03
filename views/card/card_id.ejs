@@ -40,15 +40,15 @@
                     </div>
                 </div>
                 <div class="card-comments">
-                    <% if(comments.length > 0){ %>
-                        <% for(var i = comments.length -1; i >= 0; i--) { %>
+                    <% if(usernames.length > 0){ %>
+                        <% for(var i = usernames.length -1; i >= 0; i--) { %>
                             <div class="comment">
-                                <% if(usernames[i] === null){ %>
+                                <% if(usernames[i][0] === null){ %>
                                     <p class="comment-user">[[DELETED]]</p>
                                 <% } else { %>
-                                    <a href="" class="comment-user"><%= usernames[i].username %></a>
+                                    <a href="" class="comment-user"><%= usernames[i][0].username %></a>
                                 <% } %>
-                                <p class="comment-text"><%= comments[i].text %></p>
+                                <p class="comment-text"><%= usernames[i][1].text %></p>
                             </div>
                         <% } %>
                     <% } else { %>
