@@ -7,9 +7,7 @@ async function validateUser(username, password) {
     return false;
   }
   const passwordMatch = await bcrypt.compare(password, user.password);
-  if(passwordMatch){
-    
-  }
+  
   return passwordMatch;
 }
 
