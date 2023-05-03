@@ -1,12 +1,14 @@
 const Card = require('../models/card')
+const Topic = require('../models/topic')
 
 exports.getIndex = (req, res, next) => {
-	Card.find()
-		.then(cards => {
+	Promise.all([Card.find(), Topic.find()])
+		.then(([cards, topics]) => {
 			res.render('index', {
 				pageTitle: 'Blog page',
 				cds: cards,
 				path: '/',
+				topics: topics,
 			})
 		})
 		.catch(err => {
