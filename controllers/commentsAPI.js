@@ -1,12 +1,12 @@
 const Comment = require('../models/comment');
 
 exports.createComment = async (req, res) => {
-    const { text, user, card } = req.body;
+    const { comment_text, user, card } = req.body;
 
     const comment = new Comment ({
-        text,
+        text: comment_text,
         user,
-        card
+        card: card.slice(0,24)
     });
 
     await comment.save();

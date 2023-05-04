@@ -1,9 +1,9 @@
 <%- include('../includes/head') %>
 <link rel="stylesheet" href="/css/card_page.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <body>
     <%- include('../includes/header') %>
-
     <main>
         <div class="wrapper">
             <div class="topics">
@@ -12,7 +12,7 @@
         
                 <% for (let topic of topics) { %>
                 <div class="topic">
-                  <div class="topic-icon"><img src="/icons/Frame.png" alt="robot icon"></div>
+                  <div class="topic-icon"><img src="<%= topic.icon %>" alt="robot icon"></div>
                   <div class="topic-desc">
                     <div class="topic-desc__name"><%= topic.title %></div>
                   </div>
@@ -45,11 +45,36 @@
                                 <p>Comment as </p>
                                 <a href="" ><%= session.logged_user.username %></a>
                             </div>
-                            <textarea name="text" id="" cols="30" rows="10" form="comment-form"></textarea>
                             <form action="" method="post" name="comment-form" id="comment-form">
-                                <input type="hidden" name="id" value="<%= session.logged_user.id %>">
+                                <input type="hidden" name="not_important"  value="">
+                                <input type="text" name="comment_text">
+                                <input type="hidden" name="user" value="<%= session.logged_user._id %>">
+                                <input type="hidden" name="card" value="<%= card._id %>">
                                 <input class="" type="submit" placeholder="Add comment">
                             </form>
+                            <script>
+                                $(document).ready(function() {
+                                  $('#comment-form').submit(function(event) {
+                                    event.preventDefault();
+                            
+                                    var formData = $(this).serialize();
+                    
+                                    $.ajax({
+                                      type: 'POST',
+                                      url: '/api/comments',
+                                      data: JSON.stringify(formData),
+                                      success: function(response) {
+                                        // Handle the successful response from the server
+                                        location.reload();
+                                        // Update the page as necessary
+                                      },
+                                      error: function(jqXHR, textStatus, errorThrown) {
+                                        // Handle errors that occurred during the AJAX request
+                                      }
+                                      });
+                                  });
+                                });
+                            </script>
                         </div>
                     <% } %>
                     <% if(usernames.length > 0){ %>
