@@ -1,5 +1,5 @@
 <%- include('includes/head') %>
-<link rel="stylesheet" href="css/card.css">
+<link rel="stylesheet" href="/css/card.css">
 </head>
 
 <body>
@@ -11,7 +11,7 @@
         <div class="separator"></div>
 
         <% for (let topic of topics) { %>
-        <a class="topic" href="/<%= topic._id %>">
+        <a class="topic" href="/t/<%= topic._id %>">
           <div class="topic-icon"><img src="<%= topic.icon %>" alt="robot icon"></div>
           <div class="topic-desc">
             <div class="topic-desc__name"><%= topic.title %></div>
@@ -47,7 +47,7 @@
             <div class="separator"></div>
 
             <div class="card-actions">
-              <a href=""><img src="icons/like.png" alt=""></a>
+              <a href=""><img src="/icons/like.png" alt=""></a>
               <p class="card-actions__counter"><%= card.likes %> Likes</p>
               <a class="card-actions__counter" href="/c/<%= card._id %>"><img src="/icons/Vector.png" alt=""></a>
               <p class="card-actions__counter">423 Comments</p>
