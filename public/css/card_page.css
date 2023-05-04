@@ -70,3 +70,11 @@
     border: none;
     border-radius: 10px;
 }
+
+.comment-add-intro {
+    display: flex;
+}
+
+.comment-add-intro ::a {
+    color: gray;
+}

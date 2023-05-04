@@ -39,6 +39,19 @@
                     </div>
                 </div>
                 <div class="card-comments">
+                    <% if(session.logged_user){ %>
+                        <div class="comment-add">
+                            <div class="comment-add-intro">
+                                <p>Comment as </p>
+                                <a href="" ><%= session.logged_user.username %></a>
+                            </div>
+                            <textarea name="text" id="" cols="30" rows="10" form="comment-form"></textarea>
+                            <form action="" method="post" name="comment-form" id="comment-form">
+                                <input type="hidden" name="id" value="<%= session.logged_user.id %>">
+                                <input class="" type="submit" placeholder="Add comment">
+                            </form>
+                        </div>
+                    <% } %>
                     <% if(usernames.length > 0){ %>
                         <% for(var i = usernames.length -1; i >= 0; i--) { %>
                             <div class="comment">

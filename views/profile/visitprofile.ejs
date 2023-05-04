@@ -1,0 +1,53 @@
+<%- include('../includes/head') %>
+<link rel="stylesheet" href="/css/visitprofile.css">
+</head>
+<body>
+
+        <div class="profile_main" id="main">
+            <div class="top-menu">
+                <img src="/images/logo_grey.svg" alt="logo">
+            </div>
+            <div class="left_bar">
+                <div class="icons">
+                    <a href="/"><img src="/images/home.svg" alt="home_icon"></a>
+                    <a href="/profile"><img src="/images/profile.svg" alt="profile_icon"></a>
+                    <a href="/"><img src="/images/Community.svg" alt="Community_icon"></a>
+                </div>
+                <div class="words">
+                    <a href="/">HOME</a>
+                    <a href="/profile">PROFILE</a>
+                    <a href="/">COMMUNITY</a>
+                </div>
+            </div>
+            <div class="content">
+                <div class="middle_bar">
+                    <div class="profile_info">
+                            <img src="/images/profile_av.svg" alt="profile_picture">
+                            <p style="font-weight: 600;" class="username"><%= user.username %></p>
+                            <button class="edit">Follow</button>
+                    </div>
+                    <div class="card">
+                    <% card.forEach((card) => { %>
+                        <div class="each_card">
+                            <h2><%= user.username %></h2>
+                            <p><%= card.description %></p>
+                            <p style="font-weight: 600;"><%= card.likes %> Likes <img src="/images/like.svg"></p>
+                        </div>
+                    <% }) %>
+                    </div>
+                </div>
+                <div class="right_bar">
+                    <div class="void"></div>
+                    <p>Trending Community</p>
+                    <div class="trending_community">
+                        <% trending.slice(0, 5).forEach(function(topic) { %>
+                            <div class="each_topic">
+                                <img src="<%= topic.icon %>" alt="Icon Image">
+                                <p><%= topic.title %></p>
+                            </div>
+                          <% }); %>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
