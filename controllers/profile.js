@@ -1,8 +1,10 @@
 const User = require('../models/user')
 const Card = require('../models/card')
-const Comment = require('../models/comment')
+
 exports.getIndex = async (req, res) => {
+    
     try {
+        //retrive logged in user data
         const user = await User.findOne({ username: req.session.username })
         const id = await user._id
         const card = await Card.find({ user_id: id })
@@ -10,6 +12,8 @@ exports.getIndex = async (req, res) => {
         //console.log(card)
         //console.log(id)
         trending = await tr.json()
+
+        //redirect and send the data to the ejs file, so it can be used inside the html structure
         res.render('profile/profile', { pageTitle: 'Profile Page', user: user, card: card, trending: trending, path: "/" })
     }
     catch (error) {
@@ -18,8 +22,9 @@ exports.getIndex = async (req, res) => {
 }
 exports.visitProfile = async (req, res) => {
 
+    //this function works if you want to visit somebody's page it gets the data of this user
     let username = req.params.username
-
+    //retrive user data 
     const user = await User.findOne({ username: username })
     if (user === null) { res.redirect('/') } else {
         const id = await user._id
