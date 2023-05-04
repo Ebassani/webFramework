@@ -1,5 +1,6 @@
 <%- include('../includes/head') %>
 <link rel="stylesheet" href="css/profile.css">
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
 
@@ -39,13 +40,12 @@
                                 <button class="edit_delete" onclick="delete_post('<%= card._id %>')" id="delete_bttn">Delete Post</button>
                             </div>
                         </div>
-                        <form class="edit_post" id="<%= card._id %>" action="/api/cards/<%=card._id%>?_method=PUT" method="post" style="display: none;">
-                            <input type="hidden" name="_method" value="put">
+                        <form class="edit_post" id="<%= card._id %>" action="/api/cards/<%=card._id%>" method="post" style="display: none;">
                             <input type="text" id="title" name="title" value="<%= card.title %>">
                              <br>
                              <input type="text" id="description" name="description" value="<%= card.description %>">
                             <br>
-                            <button type="submit" class="edit">EDIT</button>
+                            <button type="submit" class="edit" onclick="handleSubmit_card(event)">EDIT</button>
                         </form>
                         <button onclick="close_Form_Post('<%= card._id %>')" id="bttn<%= card._id %>" style="display: none;"></button>
                     <% }) %>
@@ -65,18 +65,18 @@
                 </div>
             </div>
         </div>
-        <form class="edit_form" id="edit_form" action="/api/users/<%=user._id %>?_method=PUT" method="POST" style="display: none;">
-            <input type="hidden" name="_method" value="PUT">
+        <form class="edit_form" id="edit_form" action="/api/users/<%=user._id %>" style="display: none;">
             <input type="password" id="password" name="password" placeholder="NEW PASSWORD">
              <br>
             <br>
-            <button type="submit" class="edit">EDIT</button>
+            <button type="submit" class="edit" onclick="handleSubmit(event)">EDIT</button>
         </form>
         <button onclick="close_Form()" id="close"></button>
         
 </body>
 
 <script>
+
     function show_hide() {
       let click = document.getElementById("log_out");
       if (click.style.display === "none") {
@@ -166,5 +166,34 @@ console.log(card_id)
         click.style.display = "none";
         main.style.filter = "blur(0px)"
         }, { once: true });
+}
+
+async function handleSubmit(event) {
+  event.preventDefault(); 
+  
+  const form = event.target.closest('form');
+  const url = form.action;
+  const data = new FormData(form);
+
+  const res = await axios ({
+    method: 'put',
+    url: url,
+    data:{password: data.get('password')}
+  })
+  window.location.reload();
+}
+async function handleSubmit_card(event) {
+  event.preventDefault(); 
+  
+  const form = event.target.closest('form');
+  const url = form.action;
+  const data = new FormData(form);
+
+  const res = await axios({
+    method: 'put',
+    url: url,
+    data: {title: data.get('title'), description: data.get('description')}
+  })
+  window.location.reload();
 }
 </script>
