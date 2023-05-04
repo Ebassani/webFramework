@@ -58,7 +58,7 @@ exports.updateCard = async (req, res) => {
 
     const id = req.params.id;
 
-    Card.findByIdAndUpdate(id, { title, description, date: Date.now }, {new: true}).then( updatedCard => {
+    Card.findByIdAndUpdate(id, { title, description }, {new: true}).then( updatedCard => {
         if (!updatedCard){
             res.status(404).json({message: 'No card with id: ' + id})
         }
