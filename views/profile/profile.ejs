@@ -35,10 +35,19 @@
                             <p><%= card.description %></p>
                             <p style="font-weight: 600;"><%= card.likes %> Likes <img src="images/like.svg"></p>
                             <div>
-                                <button class="edit_delete">Edit Post</button>
-                                <button class="edit_delete" data-postid="<%= card._id %>" onclick="delete_post(this)" id="delete_bttn">Delete Post</button>
+                                <button class="edit_delete" onclick="edit_post('<%= card._id %>')">Edit Post</button>
+                                <button class="edit_delete" onclick="delete_post('<%= card._id %>')" id="delete_bttn">Delete Post</button>
                             </div>
                         </div>
+                        <form class="edit_post" id="<%= card._id %>" action="/api/cards/<%=card._id %>" method="PUT" style="display: none;">
+                            <input type="hidden" name="_method" value="PUT">
+                            <input type="text" id="title" name="title" value="<%= card.title %>">
+                             <br>
+                             <input type="text" id="title" name="title" value="<%= card.description %>">
+                            <br>
+                            <button type="submit" class="edit">EDIT</button>
+                        </form>
+                        <button onclick="close_Form_Post('<%= card._id %>')" id="bttn<%= card._id %>" style="display: none;"></button>
                     <% }) %>
                     </div>
                 </div>
@@ -64,6 +73,7 @@
             <button type="submit" class="edit">EDIT</button>
         </form>
         <button onclick="close_Form()" id="close"></button>
+        
 </body>
 
 <script>
@@ -108,10 +118,9 @@
             }, { once: true });
    }
    async function delete_post(card_id) {
-        const button = document.getElementById('delete_bttn')
-        const postId = button.dataset.postid;
+
         try{
-            data = await fetch("/api/cards/"+postId, {method: 'delete'})
+            data = await fetch("/api/cards/"+card_id, {method: 'delete'})
         }
         catch(error){
             console.log(error)
@@ -120,4 +129,42 @@
         location.reload();
       }
 
+function edit_post(card_id){
+    let click = document.getElementById(card_id)
+    let background = document.getElementById("bttn"+card_id)
+    let main = document.getElementById("main")
+    let body = document.body
+        body.insertBefore(click, main);
+        body.insertBefore(background, main)
+
+        background.style.position = "fixed"
+        background.style.display = "block"
+        background.style.left = 0
+        background.style.right = 0
+        background.style.top = 0
+        background.style.bottom = 0
+        background.style.opacity = 0
+        background.style.zIndex = 100
+
+        click.classList.remove("slide-out");
+        click.classList.add("slide-in");
+        main.style.filter = "blur(20px)"
+        click.style.display = "flex";
+}
+
+function close_Form_Post(card_id){
+
+let click = document.getElementById(card_id)
+let main = document.getElementById("main")
+let background = document.getElementById("bttn"+card_id)
+console.log(card_id)
+
+     click.classList.remove("slide-in");
+     click.classList.add("slide-out");
+     click.addEventListener("animationend", function () {
+        background.style.display = "none"
+        click.style.display = "none";
+        main.style.filter = "blur(0px)"
+        }, { once: true });
+}
 </script>
