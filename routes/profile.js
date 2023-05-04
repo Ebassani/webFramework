@@ -4,7 +4,6 @@ const profileController = require('../controllers/profile')
 
 const router = express.Router()
 
-router.use(auth.requireAuthentication)
-router.get('/', profileController.getIndex)
-
+router.get('/', auth.requireAuthentication, profileController.getIndex)
+router.get('/:username', profileController.visitProfile)
 module.exports = router
