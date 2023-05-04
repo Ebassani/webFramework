@@ -9,13 +9,14 @@
 }
 
 .card {
-	margin-top: 30px;
-	padding-left: 20px;
-	max-width: 895px;
-	min-height: 247px;
+	margin-top: 1.875rem; /* 30px ÷ 16px = 1.875rem */
+	padding-left: 1.25rem; /* 20px ÷ 16px = 1.25rem */
+	max-width: 55.9375rem; /* 895px ÷ 16px = 55.9375rem */
+	width: 40rem; /* 895px ÷ 16px = 55.9375rem */
+	min-height: 10.4375rem; /* 247px ÷ 16px = 15.4375rem */
 
 	background: #d9d9d9;
-	border-radius: 10px;
+	border-radius: 0.625rem;
 }
 
 .card__header {
@@ -29,9 +30,9 @@
 	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: 600;
-	font-size: 20px;
-	line-height: 24px;
-	letter-spacing: 0.03em;
+	font-size: 1.25rem; /* 20px ÷ 16px = 1.25rem */
+	line-height: 1.5rem; /* 24px ÷ 16px = 1.5rem */
+	letter-spacing: 0.001875rem; /* 0.03em ÷ 16px = 0.001875rem */
 
 	color: #000000;
 }
@@ -40,21 +41,21 @@
 	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: 500;
-	font-size: 10px;
-	line-height: 22px;
-	letter-spacing: 0.03em;
+	font-size: 0.625rem; /* 10px ÷ 16px = 0.625rem */
+	line-height: 1.375rem; /* 22px ÷ 16px = 1.375rem */
+	letter-spacing: 0.001875rem; /* 0.03em ÷ 16px = 0.001875rem */
 
 	color: rgba(0, 0, 0, 0.67);
 }
 
 .card__descr {
-	margin-top: 20px;
+	margin-top: 1.25rem; /* 20px ÷ 16px = 1.25rem */
 	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: 400;
-	font-size: 17px;
-	line-height: 21px;
-	letter-spacing: 0.03em;
+	font-size: 1.0625rem; /* 17px ÷ 16px = 1.0625rem */
+	line-height: 1.3125rem; /* 21px ÷ 16px = 1.3125rem */
+	letter-spacing: 0.001875rem; /* 0.03em ÷ 16px = 0.001875rem */
 
 	color: #000000;
 }
@@ -65,26 +66,21 @@
 }
 
 .card-actions {
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-top: 1.25rem; /* 20px ÷ 16px = 1.25rem */
+	margin-bottom: 1.25rem; /* 20px ÷ 16px = 1.25rem */
 	display: flex;
 	justify-content: start;
 	align-items: center;
 }
 
 .card-actions__counter {
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 0.625rem; /* 10px ÷ 16px = 0.625rem */
+	margin-right: 0.625rem; /* 10px ÷ 16px = 0.625rem */
 	font-family: 'Montserrat';
 	font-style: normal;
 	font-weight: 600;
-	font-size: 13px;
-	line-height: 16px;
-	letter-spacing: 0.03em;
-
+	font-size: 0.8125rem; /* 13px ÷ 16px = 0.8125rem */
+	line-height: 1rem; /* 16px ÷ 16px = 1rem */
+	letter-spacing: 0.001875rem; /* 0.03em ÷ 16px = 0.001875rem */
 	color: #000000;
-}
-
-.card-actions__btn {
-	margin-right: 10px;
 }

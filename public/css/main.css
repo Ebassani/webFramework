@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	text-decoration: none;
 }
 
 body {
@@ -23,6 +24,7 @@ body {
 	border: 2px solid transparent;
 	cursor: pointer;
 }
+
 .btn:hover,
 .btn:focus {
 	background-color: #ffdd6d;
@@ -119,6 +121,11 @@ ul {
 	margin-left: 20px;
 	display: flex;
 	align-items: center;
+}
+.topic:hover,
+.topic:focus {
+	background-color: #ffdd6d;
+	border-color: #fdcd32;
 }
 
 .topic-icon {
