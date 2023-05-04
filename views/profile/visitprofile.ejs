@@ -1,7 +1,8 @@
 <%- include('../includes/head') %>
-<link rel="stylesheet" href="/css/visitprofile.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/visitprofile.css">
+    </head>
+
+    <body>
 
         <div class="profile_main" id="main">
             <div class="top-menu">
@@ -22,18 +23,26 @@
             <div class="content">
                 <div class="middle_bar">
                     <div class="profile_info">
-                            <img src="/images/profile_av.svg" alt="profile_picture">
-                            <p style="font-weight: 600;" class="username"><%= user.username %></p>
-                            <button class="edit">Follow</button>
+                        <img src="/images/profile_av.svg" alt="profile_picture">
+                        <p style="font-weight: 600;" class="username">
+                            <%= user.username %>
+                        </p>
+                        <button class="edit">Follow</button>
                     </div>
                     <div class="card">
-                    <% card.forEach((card) => { %>
-                        <div class="each_card">
-                            <h2><%= user.username %></h2>
-                            <p><%= card.description %></p>
-                            <p style="font-weight: 600;"><%= card.likes %> Likes <img src="/images/like.svg"></p>
-                        </div>
-                    <% }) %>
+                        <% card.forEach((card)=> { %>
+                            <div class="each_card">
+                                <h2>
+                                    <%= user.username %>
+                                </h2>
+                                <p>
+                                    <%= card.description %>
+                                </p>
+                                <p style="font-weight: 600;">
+                                    <%= card.likes %> Likes <img src="/images/like.svg">
+                                </p>
+                            </div>
+                            <% }) %>
                     </div>
                 </div>
                 <div class="right_bar">
@@ -43,11 +52,13 @@
                         <% trending.slice(0, 5).forEach(function(topic) { %>
                             <div class="each_topic">
                                 <img src="<%= topic.icon %>" alt="Icon Image">
-                                <p><%= topic.title %></p>
+                                <p>
+                                    <%= topic.title %>
+                                </p>
                             </div>
-                          <% }); %>
+                            <% }); %>
                     </div>
                 </div>
             </div>
         </div>
-</body>
+    </body>

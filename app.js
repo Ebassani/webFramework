@@ -3,6 +3,7 @@ const fs = require('fs')
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -23,6 +24,7 @@ const auth = require('./controllers/auth')
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
@@ -33,6 +35,7 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+app.use(methodOverride('_method'))
 app.use(blogRoutes)
 app.use('/api/users', usersApiRouter);
 app.use('/api/comments', commentsApiRouter);

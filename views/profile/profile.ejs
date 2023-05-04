@@ -39,11 +39,11 @@
                                 <button class="edit_delete" onclick="delete_post('<%= card._id %>')" id="delete_bttn">Delete Post</button>
                             </div>
                         </div>
-                        <form class="edit_post" id="<%= card._id %>" action="/api/cards/<%=card._id %>" method="PUT" style="display: none;">
-                            <input type="hidden" name="_method" value="PUT">
+                        <form class="edit_post" id="<%= card._id %>" action="/api/cards/<%=card._id%>?_method=PUT" method="post" style="display: none;">
+                            <input type="hidden" name="_method" value="put">
                             <input type="text" id="title" name="title" value="<%= card.title %>">
                              <br>
-                             <input type="text" id="title" name="title" value="<%= card.description %>">
+                             <input type="text" id="description" name="description" value="<%= card.description %>">
                             <br>
                             <button type="submit" class="edit">EDIT</button>
                         </form>
@@ -65,7 +65,7 @@
                 </div>
             </div>
         </div>
-        <form class="edit_form" id="edit_form" action="/api/users/<%=user._id %>" method="PUT" style="display: none;">
+        <form class="edit_form" id="edit_form" action="/api/users/<%=user._id %>?_method=PUT" method="POST" style="display: none;">
             <input type="hidden" name="_method" value="PUT">
             <input type="password" id="password" name="password" placeholder="NEW PASSWORD">
              <br>
