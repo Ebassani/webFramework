@@ -17,7 +17,8 @@ exports.getIndex = (req, res, next) => {
 }
 
 exports.getTopicsCards = (req, res, next) => {
-	Promise.all([Card.find({ topic_id: req.params.id }), Topic.find()])
+	const topic_id = req.params.id;
+	Promise.all([Card.find({ topic_id }), Topic.find()])
 		.then(([cards, topics]) => {
 			res.render('index', {
 				pageTitle: 'Blog page',

@@ -22,9 +22,9 @@
 
               <div class="card">
                 <div class="card-intro">
-                    <div class="topic-icon"><img src="/icons/Frame.png" alt="robot icon"></div>
+                    <div class="topic-icon"><img src="<%= topic.icon %>" alt="icon"></div>
                     <div class="card-intro-description">
-                        <a href="" class="card-topic">/<%= topic.title %></a>
+                        <a href="/<%= topic._id %>" class="card-topic">/<%= topic.title %></a>
                         <span class="card-user">by <%= user.username %> * <%= card.date %></span>
                     </div>
                 </div>
