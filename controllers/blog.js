@@ -16,6 +16,21 @@ exports.getIndex = (req, res, next) => {
 		})
 }
 
+exports.getTopicsCards = (req, res, next) => {
+	Promise.all([Card.find({ topic_id: req.params.id }), Topic.find()])
+		.then(([cards, topics]) => {
+			res.render('index', {
+				pageTitle: 'Blog page',
+				cds: cards,
+				path: '/',
+				topics: topics,
+			})
+		})
+		.catch(err => {
+			console.log(err)
+		})
+}
+
 // Add-card page
 exports.getAddCard = (req, res, next) => {
 	res.render('blog/edit-card', {

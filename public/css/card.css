@@ -84,3 +84,17 @@
 	letter-spacing: 0.001875rem; /* 0.03em ÷ 16px = 0.001875rem */
 	color: #000000;
 }
+
+.add-post {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+.add-post__input {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	width: 100%;
+}
