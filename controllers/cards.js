@@ -67,6 +67,7 @@ exports.cardPage = (req, res, next) => {
 								topic,
 								topics,
 								user,
+								session: req.session
 							})
 						})
 						.catch(err =>
