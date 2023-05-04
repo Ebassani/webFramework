@@ -48,7 +48,7 @@
 
             <div class="card-actions">
 
-              <button class="btn card-actions__btn">Comment</button>
+              <button class="btn card-actions__btn" href="/c/<%= card._id %>">Comment</button>
 
               <button class="btn card-actions__btn" href="/edit-card/<%= card._id %>?edit=true">Edit</button>
               <form action="/delete-card" method="POST">
