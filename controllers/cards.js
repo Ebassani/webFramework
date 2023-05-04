@@ -47,11 +47,11 @@ exports.cardPage = (req, res, next) => {
                     pageTitle: card.title,
                     card,
                     path: '/' + card.id,
-                    comments,
                     usernames,
                     topic,
                     topics,
-                    user
+                    user,
+                    session: req.session
                 })
             }).catch(err => res.status(400).json({message: 'Unexpected error'}))
             

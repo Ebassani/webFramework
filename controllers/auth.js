@@ -19,4 +19,10 @@ function requireAuthentication(req, res, next) {
   }
 }
 
-module.exports = { validateUser, requireAuthentication };
+async function getUser(username) {
+  const user = await User.findOne({username});
+
+  return user;
+}
+
+module.exports = { validateUser, requireAuthentication, getUser };

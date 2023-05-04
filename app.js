@@ -40,12 +40,12 @@ app.use('/api/topics', topicsApiRouter);
 app.use('/api/cards', cardsApiRouter);
 app.use('/profile', profileRouter)
 
-
 app.use('/c', cardsRouter);
 
 app.get('/login', function(req, res){
   res.render(__dirname +  '/views/login/login.ejs')
 })
+
 app.post('/login', async (req, res) => {
   const body = req.body 
   const correct = await auth.validateUser(body.username, body.password);
@@ -53,19 +53,25 @@ app.post('/login', async (req, res) => {
     req.session.loggedIn = true;
     req.session.username = body.username
 
+    const logged_user = await auth.getUser(body.username);
+    req.session.logged_user = logged_user;
+
     res.redirect('/')
   }
   else{
     res.render(__dirname + '/views/login/login.ejs')
   }
 })
+
 app.get('/register', function (req, res) {
   res.render(__dirname + '/views/registration/registration.ejs')
 })
+
 app.get('/logout', function(req, res) {
   req.session.destroy()
   res.redirect('/login')
 })
+
 mongoose.connect(uri)
 .then(() => {
   console.log('Connected to MongoDB');

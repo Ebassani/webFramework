@@ -36,7 +36,7 @@ exports.updateTopic = async (req, res) => {
 
 	const id = req.params.id
 
-	User.findByIdAndUpdate(id, { title }, { new: true })
+	Topic.findByIdAndUpdate(id, { title }, { new: true })
 		.then(updatedTopic => {
 			if (!updatedTopic) {
 				res.status(404).json({ message: 'No topic with id: ' + id })
@@ -54,7 +54,7 @@ exports.patchTopic = async (req, res) => {
 
 	const id = req.params.id
 
-	User.findByIdAndUpdate(id, { title, icon }, { new: true })
+	Topic.findByIdAndUpdate(id, { title, icon }, { new: true })
 		.then(updatedTopic => {
 			if (!updatedTopic) {
 				res.status(404).json({ message: 'No topic with id: ' + id })

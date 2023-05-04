@@ -58,7 +58,7 @@ exports.updateCard = async (req, res) => {
 
     const id = req.params.id;
 
-    User.findByIdAndUpdate(id, { title, description, date: Date.now }, {new: true}).then( updatedCard => {
+    Card.findByIdAndUpdate(id, { title, description, date: Date.now }, {new: true}).then( updatedCard => {
         if (!updatedCard){
             res.status(404).json({message: 'No card with id: ' + id})
         }
@@ -70,11 +70,11 @@ exports.updateCard = async (req, res) => {
 }
 
 exports.patchCard = async (req, res) => {
-    const { title, description, user_id, topic_id, date, likes} = req.body;
+    const { title, description, user_id, topic_id, likes} = req.body;
 
     const id = req.params.id;
     
-    User.findByIdAndUpdate(id, { title, description, user_id, topic_id, date, likes}, {new: true})
+    Card.findByIdAndUpdate(id, { title, description, user_id, topic_id,  likes}, {new: true})
     .then( updatedCard => {
         if (!updatedCard){
             res.status(404).json({message: 'No card with id: ' + id})
@@ -83,7 +83,7 @@ exports.patchCard = async (req, res) => {
             res.status(200).json(updatedCard)
         }
     })
-    .catch(err => res.status(404).json({message: 'No card with id: ' + id}));
+    .catch(err => console.log(err));
 }
 
 exports.deleteCard = async (req, res) => {
