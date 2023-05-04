@@ -62,7 +62,10 @@ app.post('/login', async (req, res) => {
 app.get('/register', function (req, res) {
   res.render(__dirname + '/views/registration/registration.ejs')
 })
-
+app.get('/logout', function(req, res) {
+  req.session.destroy()
+  res.redirect('/login')
+})
 mongoose.connect(uri)
 .then(() => {
   console.log('Connected to MongoDB');

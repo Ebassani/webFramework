@@ -3,11 +3,11 @@
 </head>
 <body>
 
-        <div class="profile_main">
+        <div class="profile_main" id="main">
             <div class="top-menu">
                 <img src="images/logo_grey.svg" alt="logo">
                 <button onclick="show_hide()" class="button"><img src="images/profile_av.svg" alt="avatar_icon">&nbsp;<p><%= user.username %></p>&nbsp;<img src="images/arrow.svg" alt="dropdown_arrow"></button>
-                <div id="log_out" style="display: none"><a href="#">Log Out</a></div>
+                <div id="log_out" style="display: none"><a href="/logout">Log Out</a></div>
             </div>
             <div class="left_bar">
                 <div class="icons">
@@ -26,7 +26,7 @@
                     <div class="profile_info">
                             <img src="images/profile_av.svg" alt="profile_picture">
                             <p style="font-weight: 600;" class="username"><%= user.username %></p>
-                            <button class="edit">Edit Profile</button>
+                            <button class="edit" onclick="edit_form()" id="button_edit">Edit Profile</button>
                     </div>
                     <div class="card">
                     <% card.forEach((card) => { %>
@@ -35,8 +35,8 @@
                             <p><%= card.description %></p>
                             <p style="font-weight: 600;"><%= card.likes %> Likes <img src="images/like.svg"></p>
                             <div>
-                                <button class="edit_delete">Edit Post</button>
-                                <button class="edit_delete">Delete Post</button>
+                                <button class="edit_delete" id="edit_btnn">Edit Post</button>
+                                <button class="edit_delete" data-postid="<%= card._id %>" onclick="delete_post(this)" id="delete_bttn">Delete Post</button>
                             </div>
                         </div>
                     <% }) %>
@@ -56,13 +56,19 @@
                 </div>
             </div>
         </div>
+        <form class="edit_form" id="edit_form" action="/api/users/<%=user._id %>" method="PUT" style="display: none;">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="password" id="password" name="password" placeholder="NEW PASSWORD">
+             <br>
+            <br>
+            <button type="submit" class="edit">EDIT</button>
+        </form>
 
 </body>
 
 <script>
     function show_hide() {
       let click = document.getElementById("log_out");
-
       if (click.style.display === "none") {
         click.classList.remove("slide-out");
          click.classList.add("slide-in");
@@ -72,7 +78,49 @@
          click.classList.add("slide-out");
          click.addEventListener("animationend", function () {
             click.style.display = "none";
+            
             }, { once: true });
       }
    }
+   function edit_form() {
+    let click = document.getElementById("edit_form")
+    let background = document.getElementById("button_edit")
+    let main = document.getElementById("main")
+
+    if (click.style.display === "none") {
+        background.style.opacity = "0"
+        click.classList.remove("slide-out");
+         click.classList.add("slide-in");
+         main.style.filter = "blur(20px)"
+         click.style.display = "flex";
+         background.style.position = "absolute"
+         background.style.minWidth = "100vw"
+        background.style.minHeight = "500vh"
+
+      } else {
+         click.classList.remove("slide-in");
+         click.classList.add("slide-out");
+         background.style.minWidth = "0"
+        background.style.minHeight = "50px"
+         background.style.position = "inherit"
+         click.addEventListener("animationend", function () {
+            click.style.display = "none";
+            main.style.filter = "blur(0px)"
+            background.style.opacity = "1"
+            }, { once: true });
+      }
+   }
+   async function delete_post(card_id) {
+        const button = document.getElementById('delete_bttn')
+        const postId = button.dataset.postid;
+        try{
+            data = await fetch("/api/cards/"+postId, {method: 'delete'})
+        }
+        catch(error){
+            console.log(error)
+        }
+
+        location.reload();
+      }
+
 </script>
