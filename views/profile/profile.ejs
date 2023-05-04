@@ -180,7 +180,7 @@ async function handleSubmit(event) {
     url: url,
     data:{password: data.get('password')}
   })
-  window.location.reload();
+  location.reload();
 }
 async function handleSubmit_card(event) {
   event.preventDefault(); 
@@ -194,6 +194,6 @@ async function handleSubmit_card(event) {
     url: url,
     data: {title: data.get('title'), description: data.get('description')}
   })
-  window.location.reload();
+  location.reload();
 }
 </script>
