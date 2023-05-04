@@ -9,6 +9,7 @@ exports.getIndex = (req, res, next) => {
 				cds: cards,
 				path: '/',
 				topics: topics,
+				topic_set: false
 			})
 		})
 		.catch(err => {
@@ -25,6 +26,9 @@ exports.getTopicsCards = (req, res, next) => {
 				cds: cards,
 				path: '/',
 				topics: topics,
+				topic_set: true,
+				session: req.session,
+				topic_id
 			})
 		})
 		.catch(err => {
