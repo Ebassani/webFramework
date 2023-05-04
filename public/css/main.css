@@ -45,6 +45,11 @@ body {
 	width: 10%;
 }
 
+.btn-add-card {
+	margin-top: 30px;
+	width: 41rem;
+}
+
 ul {
 	list-style-type: none;
 }
