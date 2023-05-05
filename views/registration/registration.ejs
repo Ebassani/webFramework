@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register</title>
     <link rel="stylesheet" type="text/css" href="css/register.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -17,15 +18,38 @@
             <p class="register_get_started">Get started now</p>
         </div>
         <div class="register_container_form">
-            <form class="register_form" id="registerForm" method="POST" action="/api/users">
+            <form class="register_form" id="registerForm" name="registerForm" method="POST" action="">
+                <input type="hidden" name="not_important" value="">
                 <input type="email" id="email" name="email" placeholder="EMAIL">
                 <br>
                 <input type="text" id="username" name="username" placeholder="USERNAME">
                 <br>
                 <input type="password" id="password" name="password" placeholder="PASSWORD">
                 <br>
-                <button type="submit" class="button">REGISTER</button>
+                <input type="hidden" name="not_importan" value="">
+                <input type="submit" class="button" placeholder="Register">
             </form>
+            <script>
+                $(document).ready(function() {
+                  $('#registerForm').submit(function(event) {
+                    event.preventDefault();
+            
+                    var formData = $(this).serialize();
+        
+                    $.ajax({
+                      type: 'POST',
+                      url: '/api/users',
+                      data: JSON.stringify(formData),
+                      success: function(response) {
+                        window.location.href = "/";
+                      },
+                      error: function(jqXHR, textStatus, errorThrown) {
+                        console.log('error')
+                      }
+                      });
+                  });
+                });
+            </script>
         </div>
         <button class="button" id="button_login" onclick="window.location.href='/login'">LOGIN</button>
     </div>
