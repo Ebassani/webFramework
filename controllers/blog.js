@@ -9,6 +9,7 @@ exports.getIndex = (req, res, next) => {
 				cds: cards,
 				path: '/',
 				topics: topics,
+				session: req.session,
 				topic_set: false
 			})
 		})

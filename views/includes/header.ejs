@@ -3,18 +3,24 @@
     <a href="/"><img src="../images/logo.png" alt="logo"></a>
   </div>
   <div class="main-header__actions">
-    <div class="main-header__actions__search">
-      <p>Search</p>
-    </div>
-    <div class="main-header__actions__notif">
-      <img src="../icons/bell.png" alt="">
-    </div>
-    <div class="main-header__item"><a href="/">
+    <% if(session.logged_user){ %>
+      <div class="main-header__item"><a href="/profile">
+      
         <button class="btn btn-avatar">
           <img class="btn-ava" src="../images/avatar1.png" alt="avatar1">
-          Sam Jones
+          <%= session.logged_user.username %>
           <img class="btn-arrow" src="../icons/triangle-down.png" alt="triangle down">
         </button>
       </a></div>
+    <% }  else {%>
+      <button class="btn btn-avatar">
+        <a href="/login">Log In</a>
+      </button>
+      <button class="btn btn-avatar">
+        <a href="/register">Register</a>
+      </button>
+      
+    <% } %>
+    
   </div>
 </header>
