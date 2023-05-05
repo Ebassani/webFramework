@@ -58,7 +58,7 @@
                         <% trending.slice(0, 5).forEach(function(topic) { %>
                             <div class="each_topic">
                                 <img src="<%= topic.icon %>" alt="Icon Image">
-                                <p><%= topic.title %></p>
+                                <p><a href = "/t/<%= topic._id %>" style="color: white;"><%= topic.title %></a></p>
                             </div>
                           <% }); %>
                     </div>
