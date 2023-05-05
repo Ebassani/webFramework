@@ -11,23 +11,23 @@
 
 <body>
     <div class="register_main">
-        <img class="register_logo" src="images/login_reg_logo.svg" alt="logo" />
+        <img class="register_logo" src="images/login_reg_logo.svg" alt="Rabbit-logo" />
         <div class="register_upper_text">
-            <p class="register_welcome">Welcome to Rabbit!</p>
-            <p class="register_get_started">Get started now</p>
+            <h1 tabindex="1" class="register_welcome">Welcome to Rabbit!</h1>
+            <h2 class="register_get_started">Get started now</h2>
         </div>
         <div class="register_container_form">
             <form class="register_form" id="registerForm" method="POST" action="/api/users">
-                <input type="email" id="email" name="email" placeholder="EMAIL">
+                <input type="email" id="email" name="email" placeholder="EMAIL" aria-label="Email" role="textbox">
                 <br>
-                <input type="text" id="username" name="username" placeholder="USERNAME">
+                <input type="text" id="username" name="username" placeholder="USERNAME" aria-label="Username" role="textbox">
                 <br>
-                <input type="password" id="password" name="password" placeholder="PASSWORD">
+                <input type="password" id="password" name="password" placeholder="PASSWORD" aria-label="Password" role="textbox">
                 <br>
-                <button type="submit" class="button">REGISTER</button>
+                <button type="submit" class="button" aria-label="Register" role="button">REGISTER</button>
             </form>
         </div>
-        <button class="button" id="button_login" onclick="window.location.href='/login'">LOGIN</button>
+        <button class="button" id="button_login" onclick="window.location.href='/login'" aria-label="Login" role="button">LOGIN</button>
     </div>
 
 </body>

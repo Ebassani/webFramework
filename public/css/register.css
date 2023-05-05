@@ -117,4 +117,8 @@ a {
     position: absolute;
     top: 20px;
     right: 20px;
+    
+}
+.button:focus{
+    border: white 5px solid;
 }
