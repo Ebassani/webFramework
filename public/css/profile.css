@@ -414,6 +414,8 @@ transition: .5s ease;
   bottom: 0;
   top: 0;
   right: 0;
+  width: 100vw;
+  height: 100vh;
   opacity: 0;
 }
 #close_post {
