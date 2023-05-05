@@ -22,37 +22,37 @@
       </div>
       <div>
         <% if(topic_set && session.logged_user){ %>
-          <form action="" method="post" name="card_form" id="card_form" class="add-post" >
-            <input type="hidden" name="not_important"  value="">
-            <label for="name">Title:</label>
-            <input class="add-post__input" type="text" id="title" name="title" required>
-            <label for="message">Description:</label>
-            <input type="text" class="add-post__input" id="description" name="description" rows="4" required>
-            <input type="hidden" name="user_id" value="<%= session.logged_user._id %>">
-            <input type="hidden" name="topic_id" value="<%= topic_id %>">
-            <input class="btn btn-add-card" type="submit" placeholder="Add a post">
-          </form>
-          <script>
-            $(document).ready(function() {
-              $('#card_form').submit(function(event) {
-                event.preventDefault();
-        
-                var formData = $(this).serialize();
+        <form action="" method="post" name="card_form" id="card_form" class="add-post">
+          <input type="hidden" name="not_important" value="">
+          <label for="name">Title:</label>
+          <input class="add-post__input" type="text" id="title" name="title" required>
+          <label for="message">Description:</label>
+          <input type="text" class="add-post__input" id="description" name="description" rows="4" required>
+          <input type="hidden" name="user_id" value="<%= session.logged_user._id %>">
+          <input type="hidden" name="topic_id" value="<%= topic_id %>">
+          <button class="btn btn-add-card" type="submit" placeholder="Add a post">Add a post</button>
+        </form>
+        <script>
+          $(document).ready(function() {
+            $('#card_form').submit(function(event) {
+              event.preventDefault();
 
-                $.ajax({
-                  type: 'POST',
-                  url: '/api/cards',
-                  data: JSON.stringify(formData),
-                  success: function(response) {
-                    
-                    location.reload();
-                    
-                  },
-                  error: function(jqXHR, textStatus, errorThrown) {}
-                  });
+              var formData = $(this).serialize();
+
+              $.ajax({
+                type: 'POST',
+                url: '/api/cards',
+                data: JSON.stringify(formData),
+                success: function(response) {
+
+                  location.reload();
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {}
               });
             });
-          </script>
+          });
+        </script>
         <% } %>
         <% if (cds.length > 0){ %>
         <div class="grid">
