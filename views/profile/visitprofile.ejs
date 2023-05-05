@@ -53,7 +53,7 @@
                             <div class="each_topic">
                                 <img src="<%= topic.icon %>" alt="Icon Image">
                                 <p>
-                                    <%= topic.title %>
+                                    <a href = "/t/<%= topic._id %>" style="color: white;"><%= topic.title %></a>
                                 </p>
                             </div>
                             <% }); %>
