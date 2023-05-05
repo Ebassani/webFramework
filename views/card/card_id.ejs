@@ -11,12 +11,12 @@
                 <div class="separator"></div>
         
                 <% for (let topic of topics) { %>
-                <div class="topic">
-                  <div class="topic-icon"><img src="<%= topic.icon %>" alt="robot icon"></div>
-                  <div class="topic-desc">
-                    <div class="topic-desc__name"><%= topic.title %></div>
-                  </div>
-                </div>
+                    <a class="topic" href="/t/<%= topic._id %>">
+                        <div class="topic-icon"><img src="<%= topic.icon %>" alt="robot icon"></div>
+                        <div class="topic-desc">
+                          <div class="topic-desc__name"><%= topic.title %></div>
+                        </div>
+                      </a>
                 <% } %>
               </div>
 
