@@ -42,12 +42,12 @@
                     <% if(session.logged_user){ %>
                         <div class="comment-add">
                             <div class="comment-add-intro">
-                                <p>Comment as </p>
-                                <a href="" ><%= session.logged_user.username %></a>
+                                <p>Comment as</p>
+                                <a class="user_name" href="/profile" ><%= session.logged_user.username %></a>
                             </div>
                             <form action="" method="post" name="comment-form" id="comment-form">
                                 <input type="hidden" name="not_important"  value="">
-                                <input type="text" name="comment_text">
+                                <input type="text" name="comment_text" required>
                                 <input type="hidden" name="user" value="<%= session.logged_user._id %>">
                                 <input type="hidden" name="card" value="<%= card._id %>">
                                 <input class="" type="submit" placeholder="Add comment">
