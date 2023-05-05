@@ -4,8 +4,8 @@
   </div>
   <div class="main-header__actions">
     <% if(session.logged_user){ %>
-      <div class="main-header__item"><a href="/profile">
-      
+    <div class="main-header__item"><a href="/profile">
+
         <button class="btn btn-avatar">
           <img class="btn-ava" src="../images/avatar1.png" alt="avatar1">
           <%= session.logged_user.username %>
@@ -13,14 +13,14 @@
         </button>
       </a></div>
     <% }  else {%>
-      <button class="btn btn-avatar">
-        <a href="/login">Log In</a>
-      </button>
-      <button class="btn btn-avatar">
-        <a href="/register">Register</a>
-      </button>
-      
+    <a class="btn btn-avatar" href="/login">
+      Log In
+    </a>
+    <a class="btn btn-avatar" href="/register">
+      Register
+    </a>
+
     <% } %>
-    
+
   </div>
 </header>
