@@ -64,12 +64,9 @@
                                       url: '/api/comments',
                                       data: JSON.stringify(formData),
                                       success: function(response) {
-                                        // Handle the successful response from the server
                                         location.reload();
-                                        // Update the page as necessary
                                       },
                                       error: function(jqXHR, textStatus, errorThrown) {
-                                        // Handle errors that occurred during the AJAX request
                                       }
                                       });
                                   });
