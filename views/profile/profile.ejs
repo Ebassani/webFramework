@@ -1,13 +1,17 @@
 <%- include('../includes/head') %>
-<link rel="stylesheet" href="css/profile.css">
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+
+    <body>
 
         <div class="profile_main" id="main">
             <div class="top-menu">
                 <img src="images/logo_grey.svg" alt="logo">
-                <button onclick="show_hide()" class="button"><img src="images/profile_av.svg" alt="avatar_icon">&nbsp;<p><%= user.username %></p>&nbsp;<img src="images/arrow.svg" alt="dropdown_arrow"></button>
+                <button onclick="show_hide()" class="button" aria-label="Toggle dropdown menu"><img src="images/profile_av.svg" alt="avatar_icon">&nbsp;
+                    <p>
+                        <%= user.username %>
+                    </p>&nbsp;<img src="images/arrow.svg" alt="dropdown_arrow"></button>
                 <div id="log_out" style="display: none"><a href="/logout">Log Out</a></div>
             </div>
             <div class="left_bar">
@@ -25,30 +29,41 @@
             <div class="content">
                 <div class="middle_bar">
                     <div class="profile_info">
-                            <img src="images/profile_av.svg" alt="profile_picture">
-                            <p style="font-weight: 600;" class="username"><%= user.username %></p>
-                            <button class="edit" onclick="edit_form()" id="button_edit">Edit Profile</button>
+                        <img src="images/profile_av.svg" alt="profile_picture">
+                        <p style="font-weight: 600;" class="username">
+                            <%= user.username %>
+                        </p>
+                        <button class="edit" onclick="edit_form()" id="button_edit" aria-label="Edit Profile">Edit Profile</button>
                     </div>
                     <div class="card">
-                    <% card.forEach((card) => { %>
-                        <div class="each_card">
-                            <h2><%= user.username %></h2>
-                            <p><%= card.description %></p>
-                            <p style="font-weight: 600;"><%= card.likes %> Likes <img src="images/like.svg"></p>
-                            <div>
-                                <button class="edit_delete" onclick="edit_post('<%= card._id %>')">Edit Post</button>
-                                <button class="edit_delete" onclick="delete_post('<%= card._id %>')" id="delete_bttn">Delete Post</button>
+                        <% card.forEach((card)=> { %>
+                            <div class="each_card">
+                                <h2 tabindex="0">
+                                    <%= user.username %>
+                                </h2>
+                                <p tabindex="0">
+                                    <%= card.description %>
+                                </p>
+                                <p style="font-weight: 600;">
+                                    <%= card.likes %> Likes <img src="images/like.svg" alt="like count">
+                                </p>
+                                <div>
+                                    <button class="edit_delete" onclick="edit_post('<%= card._id %>')" aria-label="Edit post"> EditPost </button>
+                                    <button class="edit_delete" onclick="delete_post('<%= card._id %>')" id="delete_bttn" aria-label="Delete post">Delete Post</button>
+                                       
+                                </div>
                             </div>
-                        </div>
-                        <form class="edit_post" id="<%= card._id %>" action="/api/cards/<%=card._id%>" method="post" style="display: none;">
-                            <input type="text" id="title" name="title" value="<%= card.title %>">
-                             <br>
-                             <input type="text" id="description" name="description" value="<%= card.description %>">
-                            <br>
-                            <button type="submit" class="edit" onclick="handleSubmit_card(event)">EDIT</button>
-                        </form>
-                        <button onclick="close_Form_Post('<%= card._id %>')" id="bttn<%= card._id %>" style="display: none;"></button>
-                    <% }) %>
+                            <form class="edit_post" id="<%= card._id %>" action="/api/cards/<%=card._id%>" method="post"
+                                style="display: none;">
+                                <input type="text" id="title" name="title" value="<%= card.title %>" aria-label="New title">
+                                <br>
+                                <input type="text" id="description" name="description" value="<%= card.description %>" aria-label="New Text">
+                                <br>
+                                <button type="submit" class="edit" onclick="handleSubmit_card(event)" aria-lable="Edit post submit">EDIT</button>
+                            </form>
+                            <button onclick="close_Form_Post('<%= card._id %>')" id="bttn<%= card._id %>"
+                                style="display: none;">close</button>
+                            <% }) %>
                     </div>
                 </div>
                 <div class="right_bar">
@@ -57,145 +72,147 @@
                     <div class="trending_community">
                         <% trending.slice(0, 5).forEach(function(topic) { %>
                             <div class="each_topic">
-                                <img src="<%= topic.icon %>" alt="Icon Image">
-                                <p><a href = "/t/<%= topic._id %>" style="color: white;"><%= topic.title %></a></p>
+                                <img src="<%= topic.icon %>" alt="Icon Image<%= topic._id %>">
+                                <p><a class="trend" href="/t/<%= topic._id %>" style="color: white;">
+                                        <%= topic.title %>
+                                    </a></p>
                             </div>
-                          <% }); %>
+                            <% }); %>
                     </div>
                 </div>
             </div>
         </div>
         <form class="edit_form" id="edit_form" action="/api/users/<%=user._id %>" style="display: none;">
-            <input type="password" id="password" name="password" placeholder="NEW PASSWORD">
-             <br>
+            <input type="password" id="password" name="password" placeholder="NEW PASSWORD" aria-label="New password">
             <br>
-            <button type="submit" class="edit" onclick="handleSubmit(event)">EDIT</button>
+            <br>
+            <button type="submit" class="edit" onclick="handleSubmit(event)" aria-lable="Edit password submit">EDIT</button>
         </form>
-        <button onclick="close_Form()" id="close"></button>
-        
-</body>
+        <button onclick="close_Form()" id="close">close</button>
 
-<script>
+    </body>
 
-    function show_hide() {
-      let click = document.getElementById("log_out");
-      if (click.style.display === "none") {
-        click.classList.remove("slide-out");
-         click.classList.add("slide-in");
-         click.style.display = "block";
-      } else {
-         click.classList.remove("slide-in");
-         click.classList.add("slide-out");
-         click.addEventListener("animationend", function () {
-            click.style.display = "none";
-            
-            }, { once: true });
-      }
-   }
-   function edit_form() {
-    let click = document.getElementById("edit_form")
-    let background = document.getElementById("close")
-    let main = document.getElementById("main")
+    <script>
 
-        background.style.display = "block"
-        click.classList.remove("slide-out");
-        click.classList.add("slide-in");
-        main.style.filter = "blur(20px)"
-        click.style.display = "flex";
-   }
-   function close_Form(){
+        function show_hide() {
+            let click = document.getElementById("log_out");
+            if (click.style.display === "none") {
+                click.classList.remove("slide-out");
+                click.classList.add("slide-in");
+                click.style.display = "block";
+            } else {
+                click.classList.remove("slide-in");
+                click.classList.add("slide-out");
+                click.addEventListener("animationend", function () {
+                    click.style.display = "none";
 
-    let click = document.getElementById("edit_form")
-    let main = document.getElementById("main")
-    let background = document.getElementById("close")
-
-         click.classList.remove("slide-in");
-         click.classList.add("slide-out");
-         click.addEventListener("animationend", function () {
-            background.style.display = "none"
-            click.style.display = "none";
-            main.style.filter = "blur(0px)"
-            }, { once: true });
-   }
-   async function delete_post(card_id) {
-
-        try{
-            data = await fetch("/api/cards/"+card_id, {method: 'delete'})
+                }, { once: true });
+            }
         }
-        catch(error){
-            console.log(error)
+        function edit_form() {
+            let click = document.getElementById("edit_form")
+            let background = document.getElementById("close")
+            let main = document.getElementById("main")
+
+            background.style.display = "block"
+            click.classList.remove("slide-out");
+            click.classList.add("slide-in");
+            main.style.filter = "blur(20px)"
+            click.style.display = "flex";
+        }
+        function close_Form() {
+
+            let click = document.getElementById("edit_form")
+            let main = document.getElementById("main")
+            let background = document.getElementById("close")
+
+            click.classList.remove("slide-in");
+            click.classList.add("slide-out");
+            click.addEventListener("animationend", function () {
+                background.style.display = "none"
+                click.style.display = "none";
+                main.style.filter = "blur(0px)"
+            }, { once: true });
+        }
+        async function delete_post(card_id) {
+
+            try {
+                data = await fetch("/api/cards/" + card_id, { method: 'delete' })
+            }
+            catch (error) {
+                console.log(error)
+            }
+
+            location.reload();
         }
 
-        location.reload();
-      }
+        function edit_post(card_id) {
+            let click = document.getElementById(card_id)
+            let background = document.getElementById("bttn" + card_id)
+            let main = document.getElementById("main")
+            let body = document.body
+            body.insertBefore(click, main);
+            body.insertBefore(background, main)
 
-function edit_post(card_id){
-    let click = document.getElementById(card_id)
-    let background = document.getElementById("bttn"+card_id)
-    let main = document.getElementById("main")
-    let body = document.body
-        body.insertBefore(click, main);
-        body.insertBefore(background, main)
+            background.style.position = "fixed"
+            background.style.display = "block"
+            background.style.left = 0
+            background.style.right = 0
+            background.style.top = 0
+            background.style.bottom = 0
+            background.style.opacity = 0
+            background.style.width = "100vw"
+            background.style.height = "100vh"
+            background.style.zIndex = 100
 
-        background.style.position = "fixed"
-        background.style.display = "block"
-        background.style.left = 0
-        background.style.right = 0
-        background.style.top = 0
-        background.style.bottom = 0
-        background.style.opacity = 0
-        background.style.width = "100vw"
-        background.style.height = "100vh"
-        background.style.zIndex = 100
+            click.classList.remove("slide-out");
+            click.classList.add("slide-in");
+            main.style.filter = "blur(20px)"
+            click.style.display = "flex";
+        }
 
-        click.classList.remove("slide-out");
-        click.classList.add("slide-in");
-        main.style.filter = "blur(20px)"
-        click.style.display = "flex";
-}
+        function close_Form_Post(card_id) {
 
-function close_Form_Post(card_id){
+            let click = document.getElementById(card_id)
+            let main = document.getElementById("main")
+            let background = document.getElementById("bttn" + card_id)
+            console.log(card_id)
 
-let click = document.getElementById(card_id)
-let main = document.getElementById("main")
-let background = document.getElementById("bttn"+card_id)
-console.log(card_id)
+            click.classList.remove("slide-in");
+            click.classList.add("slide-out");
+            click.addEventListener("animationend", function () {
+                background.style.display = "none"
+                click.style.display = "none";
+                main.style.filter = "blur(0px)"
+            }, { once: true });
+        }
 
-     click.classList.remove("slide-in");
-     click.classList.add("slide-out");
-     click.addEventListener("animationend", function () {
-        background.style.display = "none"
-        click.style.display = "none";
-        main.style.filter = "blur(0px)"
-        }, { once: true });
-}
+        async function handleSubmit(event) {
+            event.preventDefault();
 
-async function handleSubmit(event) {
-  event.preventDefault(); 
-  
-  const form = event.target.closest('form');
-  const url = form.action;
-  const data = new FormData(form);
+            const form = event.target.closest('form');
+            const url = form.action;
+            const data = new FormData(form);
 
-  const res = await axios ({
-    method: 'put',
-    url: url,
-    data:{password: data.get('password')}
-  })
-  location.reload();
-}
-async function handleSubmit_card(event) {
-  event.preventDefault(); 
-  
-  const form = event.target.closest('form');
-  const url = form.action;
-  const data = new FormData(form);
+            const res = await axios({
+                method: 'put',
+                url: url,
+                data: { password: data.get('password') }
+            })
+            location.reload();
+        }
+        async function handleSubmit_card(event) {
+            event.preventDefault();
 
-  const res = await axios({
-    method: 'put',
-    url: url,
-    data: {title: data.get('title'), description: data.get('description')}
-  })
-  location.reload();
-}
-</script>
+            const form = event.target.closest('form');
+            const url = form.action;
+            const data = new FormData(form);
+
+            const res = await axios({
+                method: 'put',
+                url: url,
+                data: { title: data.get('title'), description: data.get('description') }
+            })
+            location.reload();
+        }
+    </script>

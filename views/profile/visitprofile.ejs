@@ -3,21 +3,20 @@
     </head>
 
     <body>
-
         <div class="profile_main" id="main">
             <div class="top-menu">
                 <img src="/images/logo_grey.svg" alt="logo">
             </div>
             <div class="left_bar">
                 <div class="icons">
-                    <a href="/"><img src="/images/home.svg" alt="home_icon"></a>
-                    <a href="/profile"><img src="/images/profile.svg" alt="profile_icon"></a>
-                    <a href="/"><img src="/images/Community.svg" alt="Community_icon"></a>
+                    <a href="/" aria-label="Home"><img src="/images/home.svg" alt="home_icon"></a>
+                    <a href="/profile" aria-label="Profile"><img src="/images/profile.svg" alt="profile_icon"></a>
+                    <a href="/" aria-label="Community"><img src="/images/Community.svg" alt="Community_icon"></a>
                 </div>
                 <div class="words">
-                    <a href="/">HOME</a>
-                    <a href="/profile">PROFILE</a>
-                    <a href="/">COMMUNITY</a>
+                    <a href="/" aria-label="Home">HOME</a>
+                    <a href="/profile" aria-label="Profile">PROFILE</a>
+                    <a href="/" aria-label="Community">COMMUNITY</a>
                 </div>
             </div>
             <div class="content">
@@ -27,7 +26,7 @@
                         <p style="font-weight: 600;" class="username">
                             <%= user.username %>
                         </p>
-                        <button class="edit">Follow</button>
+                        <button class="edit" role="button">Follow</button>
                     </div>
                     <div class="card">
                         <% card.forEach((card)=> { %>
@@ -39,7 +38,7 @@
                                     <%= card.description %>
                                 </p>
                                 <p style="font-weight: 600;">
-                                    <%= card.likes %> Likes <img src="/images/like.svg">
+                                    <%= card.likes %> Likes <img src="/images/like.svg" alt="Like-img">
                                 </p>
                             </div>
                             <% }) %>
@@ -48,12 +47,14 @@
                 <div class="right_bar">
                     <div class="void"></div>
                     <p>Trending Community</p>
-                    <div class="trending_community">
+                    <div class="trending_community" role="list">
                         <% trending.slice(0, 5).forEach(function(topic) { %>
-                            <div class="each_topic">
+                            <div class="each_topic" role="listitem">
                                 <img src="<%= topic.icon %>" alt="Icon Image">
                                 <p>
-                                    <a href = "/t/<%= topic._id %>" style="color: white;"><%= topic.title %></a>
+                                    <a href="/t/<%= topic._id %>" style="color: white;">
+                                        <%= topic.title %>
+                                    </a>
                                 </p>
                             </div>
                             <% }); %>
