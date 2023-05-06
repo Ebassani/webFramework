@@ -7,30 +7,31 @@
   <%- include('includes/header') %>
   <main>
     <div class="wrapper">
-      <div class="topics">
-        <p class="topics-title">Trending community</p>
+      <section class="topics">
+        <h2 class="topics-title">Trending community</h2>
         <div class="separator"></div>
-
         <% for (let topic of topics) { %>
         <a class="topic" href="/t/<%= topic._id %>">
-          <div class="topic-icon"><img src="<%= topic.icon %>" alt="robot icon"></div>
+          <div class="topic-icon">
+            <img src="<%= topic.icon %>" alt="Topic icon">
+          </div>
           <div class="topic-desc">
             <div class="topic-desc__name"><%= topic.title %></div>
           </div>
         </a>
         <% } %>
-      </div>
-      <div>
+      </section>
+      <section>
         <% if(topic_set && session.logged_user){ %>
         <form action="" method="post" name="card_form" id="card_form" class="add-post">
           <input type="hidden" name="not_important" value="">
-          <label for="name">Title:</label>
-          <input class="add-post__input" type="text" id="title" name="title" required>
-          <label for="message">Description:</label>
-          <input type="text" class="add-post__input" id="description" name="description" rows="4" required>
+          <label for="title">Title:</label>
+          <input class="add-post__input" type="text" id="title" name="title" required aria-label="Enter post title">
+          <label for="description">Description:</label>
+          <textarea class="add-post__input" id="description" name="description" rows="4" required aria-label="Enter post description"></textarea>
           <input type="hidden" name="user_id" value="<%= session.logged_user._id %>">
           <input type="hidden" name="topic_id" value="<%= topic_id %>">
-          <button class="btn btn-add-card" type="submit" placeholder="Add a post">Add a post</button>
+          <button class="btn btn-add-card" type="submit" aria-label="Add a post">Add a post</button>
         </form>
         <script>
           $(document).ready(function() {
@@ -59,7 +60,7 @@
           <% for (let card of cds) { %>
           <article class="card product-item">
             <header class="card__header">
-              <img src="/images/avatar1.png" alt="">
+              <img src="/images/avatar1.png" alt="Avatar">
               <h2 class="product__title">
                 c/<%= card.title %>
               </h2>
@@ -68,18 +69,18 @@
             <p class="card__descr">
               <%= card.description %>
               <%= card.topics %>
-
             </p>
             <div class="separator"></div>
 
             <div class="card-actions">
-              <a href=""><img src="/icons/like.png" alt=""></a>
+              <a href="" aria-label="Like this post">
+                <img src="/icons/like.png" alt="Like icon">
+              </a>
               <p class="card-actions__counter"><%= card.likes %> Likes</p>
-              <a class="card-actions__counter" href="/c/<%= card._id %>"><img src="/icons/Vector.png" alt=""></a>
+              <a class="card-actions__counter" href="/c/<%= card._id %>" aria-label="View post"">
+                <img src=" /icons/Vector.png" alt="Arrow icon">
+              </a>
               <p class="card-actions__counter">423 Comments</p>
-            </div>
-            <div class="card-actions">
-
             </div>
           </article>
           <% } %>
@@ -87,7 +88,9 @@
         <% } else { %>
         <h1>No cards</h1>
         <% } %>
-      </div>
+      </section>
+    </div>
+
 
     </div>
 
