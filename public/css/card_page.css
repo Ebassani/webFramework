@@ -58,9 +58,9 @@
 
 .comment-user {
     color: white;
-    text-decoration: none;
     font-weight: bold;
     font-size: large;
+    text-decoration: underline;
 }
 
 .comment-text {
@@ -69,6 +69,7 @@
     background-color: black;
     border: none;
     border-radius: 10px;
+    color: white;
 }
 
 .comment-add-intro {
@@ -88,4 +89,38 @@
 
 .comment-add {
     margin-bottom: 0.5rem;
+}
+
+.hidden {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+::placeholder {
+    color: lightgray;
+    opacity: 1;
+}
+  
+:-ms-input-placeholder {
+    color: lightgray;
+}
+  
+::-ms-input-placeholder { 
+    color: lightgray;
+}
+
+.comment-btn {
+    padding: 0.5rem;
+    background-color: black;
+    border: 0.1rem solid white;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 5px;
+}
+
+.comment-btn:hover {
+    cursor: pointer;
 }
