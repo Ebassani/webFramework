@@ -101,6 +101,9 @@ input {
     box-shadow: none;
     transform: translateY(0);
 }
+.button:focus{
+    border: white 5px solid;
+}
 a {
     color: #FFF;
     text-decoration: underline;

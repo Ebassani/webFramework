@@ -30,9 +30,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
 }));
 
 app.use(methodOverride('_method'))
@@ -45,14 +45,14 @@ app.use('/profile', profileRouter)
 
 app.use('/c', cardsRouter);
 
-app.get('/login', function(req, res){
-  res.render(__dirname +  '/views/login/login.ejs')
+app.get('/login', function (req, res) {
+  res.render(__dirname + '/views/login/login.ejs')
 })
 
 app.post('/login', async (req, res) => {
-  const body = req.body 
+  const body = req.body
   const correct = await auth.validateUser(body.username, body.password);
-  if(correct){
+  if (correct) {
     req.session.loggedIn = true;
     req.session.username = body.username
 
@@ -61,7 +61,7 @@ app.post('/login', async (req, res) => {
 
     res.redirect('/')
   }
-  else{
+  else {
     res.render(__dirname + '/views/login/login.ejs')
   }
 })
@@ -70,16 +70,16 @@ app.get('/register', function (req, res) {
   res.render(__dirname + '/views/registration/registration.ejs')
 })
 
-app.get('/logout', function(req, res) {
+app.get('/logout', function (req, res) {
   req.session.destroy()
   res.redirect('/login')
 })
 
 mongoose.connect(uri)
-.then(() => {
-  console.log('Connected to MongoDB');
-  app.listen(PORT, () => {
-    console.log(`Server started on http://localhost:${PORT}`);
-  });
-})
-.catch(err => console.error(err));
+  .then(() => {
+    console.log('Connected to MongoDB');
+    app.listen(PORT, () => {
+      console.log(`Server started on http://localhost:${PORT}`);
+    });
+  })
+  .catch(err => console.error(err));

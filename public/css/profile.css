@@ -123,6 +123,9 @@
   align-items: center;
   font-size: max(.8vw , 10px);
 }
+.left_bar a:focus{
+  border: #FEC200 4px solid;
+}
 .icons{
   flex: 1;
   height: 100%;
@@ -286,6 +289,9 @@ transition: .5s ease;
   width: 15vh;
   will-change: transform;
 }
+.edit_delete:focus{
+    border: #FEC200 5px solid;
+}
 
 .edit_delete:disabled {
   pointer-events: none;
@@ -323,6 +329,10 @@ transition: .5s ease;
   touch-action: manipulation;
   width: 20vh;
   will-change: transform;
+}
+
+.edit:focus{
+  border: white 5px solid;
 }
 
 .edit:disabled {
@@ -448,4 +458,10 @@ transition: .5s ease;
   height: max(5vw, 80px);
   width: max(30vw, 250px);
 
+}
+.button:focus{
+  border: white 5px solid;
+}
+.trend:focus{
+  background-color: #FEC200 ;
 }

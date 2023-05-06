@@ -12,22 +12,31 @@
 
 <body>
     <div class="register_main">
-        <img class="register_logo" src="images/login_reg_logo.svg" alt="logo" />
+        <img class="register_logo" src="images/login_reg_logo.svg" alt="Rabbit-logo" />
         <div class="register_upper_text">
-            <p class="register_welcome">Welcome to Rabbit!</p>
-            <p class="register_get_started">Get started now</p>
+            <h1 tabindex="1" class="register_welcome">Welcome to Rabbit!</h1>
+            <h2 class="register_get_started">Get started now</h2>
         </div>
         <div class="register_container_form">
+<<<<<<< HEAD
+            <form class="register_form" id="registerForm" method="POST" action="/api/users">
+                <input type="email" id="email" name="email" placeholder="EMAIL" aria-label="Email" role="textbox">
+=======
             <form class="register_form" id="registerForm" name="registerForm" method="POST" action="">
                 <input type="hidden" name="not_important" value="">
                 <input type="email" id="email" name="email" placeholder="EMAIL">
+>>>>>>> 3f628e18ae0ffaffaa3ddd01b7972dcc3f2e85a3
                 <br>
-                <input type="text" id="username" name="username" placeholder="USERNAME">
+                <input type="text" id="username" name="username" placeholder="USERNAME" aria-label="Username" role="textbox">
                 <br>
-                <input type="password" id="password" name="password" placeholder="PASSWORD">
+                <input type="password" id="password" name="password" placeholder="PASSWORD" aria-label="Password" role="textbox">
                 <br>
+<<<<<<< HEAD
+                <button type="submit" class="button" aria-label="Register" role="button">REGISTER</button>
+=======
                 <input type="hidden" name="not_importan" value="">
                 <input type="submit" class="button" placeholder="Register">
+>>>>>>> 3f628e18ae0ffaffaa3ddd01b7972dcc3f2e85a3
             </form>
             <script>
                 $(document).ready(function() {
@@ -51,7 +60,7 @@
                 });
             </script>
         </div>
-        <button class="button" id="button_login" onclick="window.location.href='/login'">LOGIN</button>
+        <button class="button" id="button_login" onclick="window.location.href='/login'" aria-label="Login" role="button">LOGIN</button>
     </div>
 
 </body>

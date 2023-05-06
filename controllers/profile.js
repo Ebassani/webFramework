@@ -2,7 +2,7 @@ const User = require('../models/user')
 const Card = require('../models/card')
 
 exports.getIndex = async (req, res) => {
-    
+
     try {
         //retrive logged in user data
         const user = await User.findOne({ username: req.session.username })

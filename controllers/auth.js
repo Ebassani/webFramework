@@ -7,7 +7,7 @@ async function validateUser(username, password) {
     return false;
   }
   const passwordMatch = await bcrypt.compare(password, user.password);
-  
+
   return passwordMatch;
 }
 
@@ -20,7 +20,7 @@ function requireAuthentication(req, res, next) {
 }
 
 async function getUser(username) {
-  const user = await User.findOne({username});
+  const user = await User.findOne({ username });
 
   return user;
 }

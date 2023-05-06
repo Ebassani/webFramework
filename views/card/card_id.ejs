@@ -8,49 +8,51 @@
         <div class="wrapper">
             <div class="topics">
                 <p class="topics-title">Trending community</p>
-                <div class="separator"></div>
-        
-                <% for (let topic of topics) { %>
-                    <a class="topic" href="/t/<%= topic._id %>">
-                        <div class="topic-icon"><img src="<%= topic.icon %>" alt="robot icon"></div>
-                        <div class="topic-desc">
-                          <div class="topic-desc__name"><%= topic.title %></div>
+                <div class="separator">
+                    <% for (let topic of topics) { %>
+                        <a class="topic" href="/t/<%= topic._id %>">
+                            <div class="topic-icon"><img src="<%= topic.icon %>" alt="<%= topic.title %> icon"></div>
+                            <div class="topic-desc">
+                                <div class="topic-desc__name"><%= topic.title %></div>
+                            </div>
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+            <div>
+                <article class="card">
+                    <header class="card-intro">
+                        <div class="topic-icon"><img src="<%= topic.icon %>" alt="icon of the topic"></div>
+                        <div class="card-intro-description">
+                            <a href="/t/<%= topic._id %>" aria-label="Card topic" class="card-topic">/<%= topic.title %></a>
+                            <span aria-label="Card Author" class="card-user">by <%= user.username %> * <%= card.date %></span>
                         </div>
-                      </a>
-                <% } %>
-              </div>
-
-              <div class="card">
-                <div class="card-intro">
-                    <div class="topic-icon"><img src="<%= topic.icon %>" alt="icon"></div>
-                    <div class="card-intro-description">
-                        <a href="/t/<%= topic._id %>" class="card-topic">/<%= topic.title %></a>
-                        <span class="card-user">by <%= user.username %> * <%= card.date %></span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title"><%= card.title %></h1>
-                    <div class="card-text">
-                        <%= card.description %>
-                    </div>
-                    <div class="card-likes">
-                        <p class="card-likes__counter"><%= card.likes %></p>
-                        <a href=""><img src="../icons/like.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="card-comments">
+                    </header>
+                    <section class="card-body">
+                        <h1 aria-label="Card title" class="card-title"><%= card.title %></h1>
+                        <div aria-label="Card text" class="card-text">
+                            <%= card.description %>
+                        </div>
+                        <div class="card-likes" aria-label="Card likes">
+                            <p class="card-likes__counter"><%= card.likes %></p>
+                            <a href=""><img src="../icons/like.png" alt="like button"></a>
+                        </div>
+                    </section>
+                </article>
+                <div class="card-comments" aria-label="Card comments">
                     <% if(session.logged_user){ %>
-                        <div class="comment-add">
-                            <div class="comment-add-intro">
+                        <div class="comment-add" aria-label="Add comment">
+                            <div class="comment-add-intro" aria-label="Add comment intro">
                                 <p>Comment as</p>
                                 <a class="user_name" href="/profile" ><%= session.logged_user.username %></a>
                             </div>
-                            <form action="" method="post" name="comment-form" id="comment-form">
+                            <form role="form" action="" method="post" name="comment-form" id="comment-form" aria-label="Add comment form">
                                 <input type="hidden" name="not_important"  value="">
-                                <input type="text" name="comment_text" required>
+                                <label for="comment-text-input" class="hidden">Write comment:</label>
+                                <input class="comment-text" type="text" name="comment_text" id="comment-text" placeholder="Write comment..." required>
                                 <input type="hidden" name="user" value="<%= session.logged_user._id %>">
                                 <input type="hidden" name="card" value="<%= card._id %>">
-                                <input class="" type="submit" placeholder="Add comment">
+                                <input type="submit" value="Add comment" class="comment-btn">
                             </form>
                             <script>
                                 $(document).ready(function() {
@@ -58,7 +60,7 @@
                                     event.preventDefault();
                             
                                     var formData = $(this).serialize();
-                    
+                        
                                     $.ajax({
                                       type: 'POST',
                                       url: '/api/comments',
@@ -76,20 +78,26 @@
                     <% } %>
                     <% if(usernames.length > 0){ %>
                         <% for(var i = usernames.length -1; i >= 0; i--) { %>
-                            <div class="comment">
+                            <article class="comment">
                                 <% if(usernames[i][0] === null){ %>
-                                    <p class="comment-user">[[DELETED]]</p>
+                                    <header>
+                                        <p class="comment-user">[[DELETED]]</p>
+                                    </header>
                                 <% } else { %>
-                                    <a href="" class="comment-user"><%= usernames[i][0].username %></a>
+                                    <header>
+                                        <a href="/profile/<%= usernames[i][0].username %>" class="comment-user"><%= usernames[i][0].username %></a>
+                                    </header>
                                 <% } %>
-                                <p class="comment-text"><%= usernames[i][1].text %></p>
-                            </div>
+                                <section>
+                                    <p class="comment-text"><%= usernames[i][1].text %></p>
+                                </section>
+                            </article>
                         <% } %>
                     <% } else { %>
-                        <div class="no-comments">No comments here yet</div>
+                        <article class="no-comments">No comments here yet</article>
                     <% } %>
                 </div>
-              </div>
+            </div>
 
         </div>
         

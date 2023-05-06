@@ -10,21 +10,21 @@
 </head>
 
 <body>
-    <div class="login_main">
-        <img class="login_logo" src="images/login_reg_logo.svg" / alt="logo">
+    <div class="login_main" role="main" aria-label="Login Form">
+        <img class="login_logo" src="images/login_reg_logo.svg" alt="Rabbit-logo">
         <div class="login_upper_text">
-            <p class="login_welcome">Welcome back to Rabbit!</p>
+            <h1 tabindex="1" class="login_welcome">Welcome back to Rabbit!</h1>
         </div>
-        <div class="login_container_form">
+        <div class="login_container_form" role="form" aria-label="Login Form">
             <form class="login_form" id="loginForm" method="POST" action="/login">
-                <input type="text" id="username" name="username" placeholder="USERNAME">
+                <input type="text" id="username" name="username" placeholder="USERNAME" aria-label="Username">
                 <br>
-                <input type="password" id="password" name="password" placeholder="PASSWORD">
+                <input type="password" id="password" name="password" placeholder="PASSWORD" aria-label="Username">
                 <br>
                 <button type="submit" class="button">LOGIN</button>
             </form>
         </div>
-        <div class="login_links">
+        <div class="login_links" role="links" aria-label="Links">
             <p class="login_singUp">YOU DON’T HAVE A ACCOUNT? <a href="/register">SIGN UP HERE</a></p>
             <p class="login_forgot">FORGOT YOUR PASSWORD? <u>CLICK HERE</u></p>
         </div>
